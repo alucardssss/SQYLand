@@ -118,41 +118,6 @@
               <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
               <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="artiste" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="component" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="formulaire" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="front" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -193,12 +158,12 @@
       <option name="presentableId" value="Default" />
       <updated>1546944751322</updated>
       <workItem from="1546944755359" duration="2543000" />
-      <workItem from="1546950979230" duration="1040000" />
+      <workItem from="1546950979230" duration="1271000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3583000" />
+    <option name="totallyTimeSpent" value="3814000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
