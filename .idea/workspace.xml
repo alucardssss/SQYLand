@@ -7,6 +7,7 @@
       <change beforePath="$PROJECT_DIR$/src/Controller/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FrontController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
+
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,10 +48,12 @@
         </entry>
       </file>
     </leaf>
+
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -140,22 +143,26 @@
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/validator" />
     </include_path>
   </component>
+
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
+
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
+
+
         <subPane>
           <expand>
             <path>
@@ -165,18 +172,22 @@
             <path>
               <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
               <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
+
+          <item name="public" type="462c0819:PsiDirectoryNode" />
+
             </path>
             <path>
               <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
               <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+
             </path>
             <path>
               <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
               <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
+
             </path>
             <path>
               <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
@@ -187,7 +198,9 @@
           <select />
         </subPane>
       </pane>
+
       <pane id="Scope" />
+
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -195,6 +208,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../techNews" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -219,6 +233,7 @@
       <option name="presentableId" value="Default" />
       <updated>1546945832031</updated>
       <workItem from="1546945843590" duration="5076000" />
+
     </task>
     <servers />
   </component>
@@ -248,6 +263,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,6 +331,7 @@
           </folding>
         </state>
       </provider>
+
     </entry>
   </component>
 </project>
