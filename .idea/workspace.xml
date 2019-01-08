@@ -10,11 +10,17 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/admin/connexionAdmin.html.twig">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -111,6 +117,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -118,11 +125,59 @@
               <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
               <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< Updated upstream
+=======
+            <path>
+              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="artiste" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SQYLand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQYLand" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="formulaire" type="462c0819:PsiDirectoryNode" />
+            </path>
+>>>>>>> Stashed changes
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -158,18 +213,27 @@
       <option name="presentableId" value="Default" />
       <updated>1546944751322</updated>
       <workItem from="1546944755359" duration="2543000" />
+<<<<<<< Updated upstream
       <workItem from="1546950979230" duration="1271000" />
+=======
+      <workItem from="1546950979230" duration="1559000" />
+      <workItem from="1546957149006" duration="199000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="3814000" />
+=======
+    <option name="totallyTimeSpent" value="4301000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2532189" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
@@ -193,16 +257,10 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/component/_footer.html.twig" />
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/component/_navbar.html.twig" />
-    <entry file="file://$PROJECT_DIR$/templates/front/accueil.html.twig" />
-    <entry file="file://$PROJECT_DIR$/templates/formulaire/contact.html.twig" />
     <entry file="file://$PROJECT_DIR$/templates/artiste/group.html.twig" />
-    <entry file="file://$PROJECT_DIR$/templates/component/_header.html.twig" />
-    <entry file="file://$PROJECT_DIR$/templates/component/_search.html.twig" />
     <entry file="file://$PROJECT_DIR$/templates/layout.html.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -240,6 +298,9 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/email.html.twig">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/connexionAdmin.html.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
