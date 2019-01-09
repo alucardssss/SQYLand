@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contenu index{% endblock %}
+
+{% block body %}
+    <h1>Contenu index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>SummaryText1</th>
+                <th>SummaryLien1</th>
+                <th>SummaryBouton1</th>
+                <th>SummaryText2</th>
+                <th>SummaryLien2</th>
+                <th>SummaryBouton2</th>
+                <th>ImagePanoHead</th>
+                <th>ImagePanoPresentation</th>
+                <th>ImagePanoContact</th>
+                <th>ImagePanoInscription</th>
+                <th>ImagePanoConnexion</th>
+                <th>ImagePanoResultat</th>
+                <th>PresentationImage</th>
+                <th>PresentationText</th>
+                <th>Mentions</th>
+                <th>Presse</th>
+                <th>PresseDoc</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contenu in contenus %}
+            <tr>
+                <td>{{ contenu.id }}</td>
+                <td>{{ contenu.summaryText1 }}</td>
+                <td>{{ contenu.summaryLien1 }}</td>
+                <td>{{ contenu.summaryBouton1 }}</td>
+                <td>{{ contenu.summaryText2 }}</td>
+                <td>{{ contenu.summaryLien2 }}</td>
+                <td>{{ contenu.summaryBouton2 }}</td>
+                <td>{{ contenu.imagePanoHead }}</td>
+                <td>{{ contenu.imagePanoPresentation }}</td>
+                <td>{{ contenu.imagePanoContact }}</td>
+                <td>{{ contenu.imagePanoInscription }}</td>
+                <td>{{ contenu.imagePanoConnexion }}</td>
+                <td>{{ contenu.imagePanoResultat }}</td>
+                <td>{{ contenu.presentationImage }}</td>
+                <td>{{ contenu.presentationText }}</td>
+                <td>{{ contenu.mentions }}</td>
+                <td>{{ contenu.presse }}</td>
+                <td>{{ contenu.presseDoc }}</td>
+                <td>
+                    <a href="{{ path('contenu_show', {'id': contenu.id}) }}">show</a>
+                    <a href="{{ path('contenu_edit', {'id': contenu.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('contenu_new') }}">Create new</a>
+{% endblock %}

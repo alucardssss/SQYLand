@@ -2,84 +2,90 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ArtisteRepository")
+ * Artiste
+ *
+ * @ORM\Table(name="artiste", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"})}, indexes={@ORM\Index(name="projet_id", columns={"projet_id"})})
+ * @ORM\Entity
  */
 class Artiste
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=60, nullable=false)
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=60, nullable=false)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @var string
+     *
+     * @ORM\Column(name="mdp", type="string", length=64, nullable=false)
      */
     private $mdp;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     *
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string|null
+     *
+     * @ORM\Column(name="resume", type="text", length=0, nullable=true)
      */
     private $resume;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @var string|null
+     *
+     * @ORM\Column(name="image", type="string", length=60, nullable=true)
      */
-    private $date_inscription;
+    private $image;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_inscription", type="datetime", nullable=false)
      */
-    private $date_connexion;
+    private $dateInscription;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\categorie", mappedBy="artiste")
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="date_connexion", type="datetime", nullable=true)
      */
-    private $categorie_id;
+    private $dateConnexion;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\groupe", mappedBy="artiste")
-     */
-    private $groupe_id;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\projet", mappedBy="artiste")
-     */
-    private $projet_id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Projet", inversedBy="artiste_id")
-     * @ORM\JoinColumn(nullable=false)
+     * @var \Projet
+     *
+     * @ORM\ManyToOne(targetEntity="Projet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="projet_id", referencedColumnName="id")
+     * })
      */
     private $projet;
-
-    public function __construct()
-    {
-        $this->categorie_id = new ArrayCollection();
-        $this->groupe_id = new ArrayCollection();
-        $this->projet_id = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -127,7 +133,7 @@ class Artiste
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
@@ -139,126 +145,45 @@ class Artiste
         return $this->resume;
     }
 
-    public function setResume(string $resume): self
+    public function setResume(?string $resume): self
     {
         $this->resume = $resume;
 
         return $this;
     }
 
-    public function getDateInscription(): ?\DateTimeInterface
+    public function getImage(): ?string
     {
-        return $this->date_inscription;
+        return $this->image;
     }
 
-    public function setDateInscription(\DateTimeInterface $date_inscription): self
+    public function setImage(?string $image): self
     {
-        $this->date_inscription = $date_inscription;
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getDateInscription(): ?\DateTimeInterface
+    {
+        return $this->dateInscription;
+    }
+
+    public function setDateInscription(\DateTimeInterface $dateInscription): self
+    {
+        $this->dateInscription = $dateInscription;
 
         return $this;
     }
 
     public function getDateConnexion(): ?\DateTimeInterface
     {
-        return $this->date_connexion;
+        return $this->dateConnexion;
     }
 
-    public function setDateConnexion(\DateTimeInterface $date_connexion): self
+    public function setDateConnexion(?\DateTimeInterface $dateConnexion): self
     {
-        $this->date_connexion = $date_connexion;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|categorie[]
-     */
-    public function getCategorieId(): Collection
-    {
-        return $this->categorie_id;
-    }
-
-    public function addCategorieId(categorie $categorieId): self
-    {
-        if (!$this->categorie_id->contains($categorieId)) {
-            $this->categorie_id[] = $categorieId;
-            $categorieId->setArtiste($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategorieId(categorie $categorieId): self
-    {
-        if ($this->categorie_id->contains($categorieId)) {
-            $this->categorie_id->removeElement($categorieId);
-            // set the owning side to null (unless already changed)
-            if ($categorieId->getArtiste() === $this) {
-                $categorieId->setArtiste(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|groupe[]
-     */
-    public function getGroupeId(): Collection
-    {
-        return $this->groupe_id;
-    }
-
-    public function addGroupeId(groupe $groupeId): self
-    {
-        if (!$this->groupe_id->contains($groupeId)) {
-            $this->groupe_id[] = $groupeId;
-            $groupeId->setArtiste($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGroupeId(groupe $groupeId): self
-    {
-        if ($this->groupe_id->contains($groupeId)) {
-            $this->groupe_id->removeElement($groupeId);
-            // set the owning side to null (unless already changed)
-            if ($groupeId->getArtiste() === $this) {
-                $groupeId->setArtiste(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|projet[]
-     */
-    public function getProjetId(): Collection
-    {
-        return $this->projet_id;
-    }
-
-    public function addProjetId(projet $projetId): self
-    {
-        if (!$this->projet_id->contains($projetId)) {
-            $this->projet_id[] = $projetId;
-            $projetId->setArtiste($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProjetId(projet $projetId): self
-    {
-        if ($this->projet_id->contains($projetId)) {
-            $this->projet_id->removeElement($projetId);
-            // set the owning side to null (unless already changed)
-            if ($projetId->getArtiste() === $this) {
-                $projetId->setArtiste(null);
-            }
-        }
+        $this->dateConnexion = $dateConnexion;
 
         return $this;
     }
@@ -274,4 +199,6 @@ class Artiste
 
         return $this;
     }
+
+
 }

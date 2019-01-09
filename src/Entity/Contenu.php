@@ -5,271 +5,310 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ContenuRepository")
+ * Contenu
+ *
+ * @ORM\Table(name="contenu")
+ * @ORM\Entity
  */
 class Contenu
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="summary_text1", type="text", length=0, nullable=false)
      */
-    private $image_pano_head;
+    private $summaryText1;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="summary_lien1", type="string", length=90, nullable=false)
      */
-    private $image_pano_presentation;
+    private $summaryLien1;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="summary_bouton1", type="string", length=20, nullable=false)
      */
-    private $image_pano_contact;
+    private $summaryBouton1;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="summary_text2", type="text", length=0, nullable=false)
      */
-    private $image_pano_inscription;
+    private $summaryText2;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="summary_lien2", type="string", length=90, nullable=false)
      */
-    private $image_pano_connexion;
+    private $summaryLien2;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="summary_bouton2", type="string", length=20, nullable=false)
      */
-    private $image_pano_resultat;
+    private $summaryBouton2;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="image_pano_head", type="string", length=60, nullable=false)
      */
-    private $summary_text1;
+    private $imagePanoHead;
 
     /**
-     * @ORM\Column(type="string", length=90)
+     * @var string
+     *
+     * @ORM\Column(name="image_pano_presentation", type="string", length=60, nullable=false)
      */
-    private $summary_lien1;
+    private $imagePanoPresentation;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @var string
+     *
+     * @ORM\Column(name="image_pano_contact", type="string", length=60, nullable=false)
      */
-    private $summary_bouton1;
+    private $imagePanoContact;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="image_pano_inscription", type="string", length=60, nullable=false)
      */
-    private $summary_text2;
+    private $imagePanoInscription;
 
     /**
-     * @ORM\Column(type="string", length=90)
+     * @var string
+     *
+     * @ORM\Column(name="image_pano_connexion", type="string", length=60, nullable=false)
      */
-    private $summary_lien2;
+    private $imagePanoConnexion;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @var string
+     *
+     * @ORM\Column(name="image_pano_resultat", type="string", length=60, nullable=false)
      */
-    private $summary_bouton2;
+    private $imagePanoResultat;
 
     /**
-     * @ORM\Column(type="string", length=90)
+     * @var string
+     *
+     * @ORM\Column(name="presentation_image", type="string", length=60, nullable=false)
      */
-    private $presentation_image;
+    private $presentationImage;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="presentation_text", type="text", length=0, nullable=false)
      */
-    private $presentation_text;
+    private $presentationText;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="mentions", type="text", length=0, nullable=false)
      */
     private $mentions;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="presse", type="text", length=0, nullable=false)
      */
     private $presse;
 
     /**
-     * @ORM\Column(type="string", length=90)
+     * @var string
+     *
+     * @ORM\Column(name="presse_doc", type="string", length=90, nullable=false)
      */
-    private $presse_doc;
+    private $presseDoc;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getImagePanoHead(): ?string
-    {
-        return $this->image_pano_head;
-    }
-
-    public function setImagePanoHead(string $image_pano_head): self
-    {
-        $this->image_pano_head = $image_pano_head;
-
-        return $this;
-    }
-
-    public function getImagePanoPresentation(): ?string
-    {
-        return $this->image_pano_presentation;
-    }
-
-    public function setImagePanoPresentation(string $image_pano_presentation): self
-    {
-        $this->image_pano_presentation = $image_pano_presentation;
-
-        return $this;
-    }
-
-    public function getImagePanoContact(): ?string
-    {
-        return $this->image_pano_contact;
-    }
-
-    public function setImagePanoContact(string $image_pano_contact): self
-    {
-        $this->image_pano_contact = $image_pano_contact;
-
-        return $this;
-    }
-
-    public function getImagePanoInscription(): ?string
-    {
-        return $this->image_pano_inscription;
-    }
-
-    public function setImagePanoInscription(string $image_pano_inscription): self
-    {
-        $this->image_pano_inscription = $image_pano_inscription;
-
-        return $this;
-    }
-
-    public function getImagePanoConnexion(): ?string
-    {
-        return $this->image_pano_connexion;
-    }
-
-    public function setImagePanoConnexion(string $image_pano_connexion): self
-    {
-        $this->image_pano_connexion = $image_pano_connexion;
-
-        return $this;
-    }
-
-    public function getImagePanoResultat(): ?string
-    {
-        return $this->image_pano_resultat;
-    }
-
-    public function setImagePanoResultat(string $image_pano_resultat): self
-    {
-        $this->image_pano_resultat = $image_pano_resultat;
-
-        return $this;
-    }
-
     public function getSummaryText1(): ?string
     {
-        return $this->summary_text1;
+        return $this->summaryText1;
     }
 
-    public function setSummaryText1(string $summary_text1): self
+    public function setSummaryText1(string $summaryText1): self
     {
-        $this->summary_text1 = $summary_text1;
+        $this->summaryText1 = $summaryText1;
 
         return $this;
     }
 
     public function getSummaryLien1(): ?string
     {
-        return $this->summary_lien1;
+        return $this->summaryLien1;
     }
 
-    public function setSummaryLien1(string $summary_lien1): self
+    public function setSummaryLien1(string $summaryLien1): self
     {
-        $this->summary_lien1 = $summary_lien1;
+        $this->summaryLien1 = $summaryLien1;
 
         return $this;
     }
 
     public function getSummaryBouton1(): ?string
     {
-        return $this->summary_bouton1;
+        return $this->summaryBouton1;
     }
 
-    public function setSummaryBouton1(string $summary_bouton1): self
+    public function setSummaryBouton1(string $summaryBouton1): self
     {
-        $this->summary_bouton1 = $summary_bouton1;
+        $this->summaryBouton1 = $summaryBouton1;
 
         return $this;
     }
 
     public function getSummaryText2(): ?string
     {
-        return $this->summary_text2;
+        return $this->summaryText2;
     }
 
-    public function setSummaryText2(string $summary_text2): self
+    public function setSummaryText2(string $summaryText2): self
     {
-        $this->summary_text2 = $summary_text2;
+        $this->summaryText2 = $summaryText2;
 
         return $this;
     }
 
     public function getSummaryLien2(): ?string
     {
-        return $this->summary_lien2;
+        return $this->summaryLien2;
     }
 
-    public function setSummaryLien2(string $summary_lien2): self
+    public function setSummaryLien2(string $summaryLien2): self
     {
-        $this->summary_lien2 = $summary_lien2;
+        $this->summaryLien2 = $summaryLien2;
 
         return $this;
     }
 
     public function getSummaryBouton2(): ?string
     {
-        return $this->summary_bouton2;
+        return $this->summaryBouton2;
     }
 
-    public function setSummaryBouton2(string $summary_bouton2): self
+    public function setSummaryBouton2(string $summaryBouton2): self
     {
-        $this->summary_bouton2 = $summary_bouton2;
+        $this->summaryBouton2 = $summaryBouton2;
+
+        return $this;
+    }
+
+    public function getImagePanoHead(): ?string
+    {
+        return $this->imagePanoHead;
+    }
+
+    public function setImagePanoHead(string $imagePanoHead): self
+    {
+        $this->imagePanoHead = $imagePanoHead;
+
+        return $this;
+    }
+
+    public function getImagePanoPresentation(): ?string
+    {
+        return $this->imagePanoPresentation;
+    }
+
+    public function setImagePanoPresentation(string $imagePanoPresentation): self
+    {
+        $this->imagePanoPresentation = $imagePanoPresentation;
+
+        return $this;
+    }
+
+    public function getImagePanoContact(): ?string
+    {
+        return $this->imagePanoContact;
+    }
+
+    public function setImagePanoContact(string $imagePanoContact): self
+    {
+        $this->imagePanoContact = $imagePanoContact;
+
+        return $this;
+    }
+
+    public function getImagePanoInscription(): ?string
+    {
+        return $this->imagePanoInscription;
+    }
+
+    public function setImagePanoInscription(string $imagePanoInscription): self
+    {
+        $this->imagePanoInscription = $imagePanoInscription;
+
+        return $this;
+    }
+
+    public function getImagePanoConnexion(): ?string
+    {
+        return $this->imagePanoConnexion;
+    }
+
+    public function setImagePanoConnexion(string $imagePanoConnexion): self
+    {
+        $this->imagePanoConnexion = $imagePanoConnexion;
+
+        return $this;
+    }
+
+    public function getImagePanoResultat(): ?string
+    {
+        return $this->imagePanoResultat;
+    }
+
+    public function setImagePanoResultat(string $imagePanoResultat): self
+    {
+        $this->imagePanoResultat = $imagePanoResultat;
 
         return $this;
     }
 
     public function getPresentationImage(): ?string
     {
-        return $this->presentation_image;
+        return $this->presentationImage;
     }
 
-    public function setPresentationImage(string $presentation_image): self
+    public function setPresentationImage(string $presentationImage): self
     {
-        $this->presentation_image = $presentation_image;
+        $this->presentationImage = $presentationImage;
 
         return $this;
     }
 
     public function getPresentationText(): ?string
     {
-        return $this->presentation_text;
+        return $this->presentationText;
     }
 
-    public function setPresentationText(string $presentation_text): self
+    public function setPresentationText(string $presentationText): self
     {
-        $this->presentation_text = $presentation_text;
+        $this->presentationText = $presentationText;
 
         return $this;
     }
@@ -300,13 +339,15 @@ class Contenu
 
     public function getPresseDoc(): ?string
     {
-        return $this->presse_doc;
+        return $this->presseDoc;
     }
 
-    public function setPresseDoc(string $presse_doc): self
+    public function setPresseDoc(string $presseDoc): self
     {
-        $this->presse_doc = $presse_doc;
+        $this->presseDoc = $presseDoc;
 
         return $this;
     }
+
+
 }
