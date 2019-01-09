@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Contenu;
+use App\Entity\contenu;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Contenu|null find($id, $lockMode = null, $lockVersion = null)
- * @method Contenu|null findOneBy(array $criteria, array $orderBy = null)
- * @method Contenu[]    findAll()
- * @method Contenu[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method contenu|null find($id, $lockMode = null, $lockVersion = null)
+ * @method contenu|null findOneBy(array $criteria, array $orderBy = null)
+ * @method contenu[]    findAll()
+ * @method contenu[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ContenuRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Contenu::class);
+        parent::__construct($registry, contenu::class);
     }
 
     // /**
-    //  * @return Contenu[] Returns an array of Contenu objects
+    //  * @return contenu[] Returns an array of contenu objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ContenuRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Contenu
+    public function findOneBySomeField($value): ?contenu
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

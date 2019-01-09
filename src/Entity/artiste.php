@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArtisteRepository")
  */
-class Artiste
+class artiste
 {
     /**
      * @ORM\Id()
@@ -39,37 +39,38 @@ class Artiste
     private $type;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text",nullable=true)
      */
     private $resume;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime",nullable=true)
+
      */
     private $date_inscription;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime",nullable=true)
      */
     private $date_connexion;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\categorie", mappedBy="artiste")
+     * @ORM\OneToMany(targetEntity="categorie", mappedBy="artiste")
      */
     private $categorie_id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\groupe", mappedBy="artiste")
+     * @ORM\OneToMany(targetEntity="groupe", mappedBy="artiste")
      */
     private $groupe_id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\projet", mappedBy="artiste")
+     * @ORM\OneToMany(targetEntity="projet", mappedBy="artiste")
      */
     private $projet_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Projet", inversedBy="artiste_id")
+     * @ORM\ManyToOne(targetEntity="projet", inversedBy="artiste_id")
      * @ORM\JoinColumn(nullable=false)
      */
     private $projet;
@@ -263,12 +264,12 @@ class Artiste
         return $this;
     }
 
-    public function getProjet(): ?Projet
+    public function getProjet(): ?projet
     {
         return $this->projet;
     }
 
-    public function setProjet(?Projet $projet): self
+    public function setProjet(?projet $projet): self
     {
         $this->projet = $projet;
 

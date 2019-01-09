@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategorieRepository")
  */
-class Categorie
+class categorie
 {
     /**
      * @ORM\Id()
@@ -32,17 +32,17 @@ class Categorie
     private $nom;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Artiste", inversedBy="categorie_id")
+     * @ORM\ManyToOne(targetEntity="artiste", inversedBy="categorie_id")
      */
     private $artiste;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Groupe", inversedBy="categorie_id")
+     * @ORM\ManyToOne(targetEntity="groupe", inversedBy="categorie_id")
      */
     private $groupe;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Projet", inversedBy="categorie_id")
+     * @ORM\ManyToOne(targetEntity="projet", inversedBy="categorie_id")
      * @ORM\JoinColumn(nullable=true)
      */
     private $projet;
@@ -88,36 +88,36 @@ class Categorie
         return $this;
     }
 
-    public function getArtiste(): ?Artiste
+    public function getArtiste(): ?artiste
     {
         return $this->artiste;
     }
 
-    public function setArtiste(?Artiste $artiste): self
+    public function setArtiste(?artiste $artiste): self
     {
         $this->artiste = $artiste;
 
         return $this;
     }
 
-    public function getGroupe(): ?Groupe
+    public function getGroupe(): ?groupe
     {
         return $this->groupe;
     }
 
-    public function setGroupe(?Groupe $groupe): self
+    public function setGroupe(?groupe $groupe): self
     {
         $this->groupe = $groupe;
 
         return $this;
     }
 
-    public function getProjet(): ?Projet
+    public function getProjet(): ?projet
     {
         return $this->projet;
     }
 
-    public function setProjet(?Projet $projet): self
+    public function setProjet(?projet $projet): self
     {
         $this->projet = $projet;
 

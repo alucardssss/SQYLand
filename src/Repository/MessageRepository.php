@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Message;
+use App\Entity\message;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Message|null find($id, $lockMode = null, $lockVersion = null)
- * @method Message|null findOneBy(array $criteria, array $orderBy = null)
- * @method Message[]    findAll()
- * @method Message[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method message|null find($id, $lockMode = null, $lockVersion = null)
+ * @method message|null findOneBy(array $criteria, array $orderBy = null)
+ * @method message[]    findAll()
+ * @method message[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class MessageRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Message::class);
+        parent::__construct($registry, message::class);
     }
 
     // /**
-    //  * @return Message[] Returns an array of Message objects
+    //  * @return message[] Returns an array of message objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class MessageRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Message
+    public function findOneBySomeField($value): ?message
     {
         return $this->createQueryBuilder('m')
             ->andWhere('m.exampleField = :val')
