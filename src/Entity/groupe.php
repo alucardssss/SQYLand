@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GroupeRepository")
  */
-class Groupe
+class groupe
 {
     /**
      * @ORM\Id()
@@ -64,17 +64,17 @@ class Groupe
     private $lien_perso;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Artiste", inversedBy="groupe_id")
+     * @ORM\ManyToOne(targetEntity="artiste", inversedBy="groupe_id")
      */
     private $artiste;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\categorie", mappedBy="groupe")
+     * @ORM\OneToMany(targetEntity="categorie", mappedBy="groupe")
      */
     private $categorie_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Projet", inversedBy="groupe_id")
+     * @ORM\ManyToOne(targetEntity="projet", inversedBy="groupe_id")
      */
     private $projet;
 
@@ -196,12 +196,12 @@ class Groupe
         return $this;
     }
 
-    public function getArtiste(): ?Artiste
+    public function getArtiste(): ?artiste
     {
         return $this->artiste;
     }
 
-    public function setArtiste(?Artiste $artiste): self
+    public function setArtiste(?artiste $artiste): self
     {
         $this->artiste = $artiste;
 
@@ -239,12 +239,12 @@ class Groupe
         return $this;
     }
 
-    public function getProjet(): ?Projet
+    public function getProjet(): ?projet
     {
         return $this->projet;
     }
 
-    public function setProjet(?Projet $projet): self
+    public function setProjet(?projet $projet): self
     {
         $this->projet = $projet;
 

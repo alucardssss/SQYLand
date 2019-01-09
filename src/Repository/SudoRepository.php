@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Sudo;
+use App\Entity\sudo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Sudo|null find($id, $lockMode = null, $lockVersion = null)
- * @method Sudo|null findOneBy(array $criteria, array $orderBy = null)
- * @method Sudo[]    findAll()
- * @method Sudo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method sudo|null find($id, $lockMode = null, $lockVersion = null)
+ * @method sudo|null findOneBy(array $criteria, array $orderBy = null)
+ * @method sudo[]    findAll()
+ * @method sudo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class SudoRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Sudo::class);
+        parent::__construct($registry, sudo::class);
     }
 
     // /**
-    //  * @return Sudo[] Returns an array of Sudo objects
+    //  * @return sudo[] Returns an array of sudo objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SudoRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Sudo
+    public function findOneBySomeField($value): ?sudo
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')

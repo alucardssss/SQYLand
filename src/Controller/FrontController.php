@@ -66,17 +66,6 @@ class FrontController extends AbstractController
 
 
     /**
-     * @Route("/{slug<[a-zA-Z0-9\-_\/]+>}",
-     *     methods={"GET"}, name="autre")
-     * @return Response
-     */
-    public function autreChemin()
-    {
-        return new Response("<html><body><h1>PAGE de la categorie</h1></body></html>");
-        return $this->render('base.html.twig');
-    }
-
-    /**
      * Page de Contact
      * @Route("/contact/")
      * @return Response
@@ -145,6 +134,15 @@ class FrontController extends AbstractController
     }
 
 
-
+    /**
+     * @Route("/{slug<[a-zA-Z0-9\-_\/]+>}",
+     *     methods={"GET"}, name="autre")
+     * @return Response
+     */
+    public function autreChemin()
+    {
+        return new Response("<html><body><h1>PAGE de la categorie</h1></body></html>");
+        return $this->render('base.html.twig');
+    }
 
 }
