@@ -2,153 +2,181 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProjetRepository")
+ * Projet
+ *
+ * @ORM\Table(name="projet", indexes={@ORM\Index(name="categorie_id", columns={"categorie_id"})})
+ * @ORM\Entity
  */
 class projet
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=60, nullable=false)
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="resume", type="text", length=0, nullable=false)
      */
     private $resume;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @var string|null
+     *
+     * @ORM\Column(name="image_profil", type="string", length=60, nullable=true)
      */
-    private $valider;
+    private $imageProfil;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="image_logo1", type="string", length=60, nullable=true)
      */
-    private $image_logo1;
+    private $imageLogo1;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="image_logo2", type="string", length=60, nullable=true)
      */
-    private $image_logo2;
+    private $imageLogo2;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="image_logo3", type="string", length=60, nullable=true)
      */
-    private $image_logo3;
+    private $imageLogo3;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="image1", type="string", length=60, nullable=true)
      */
     private $image1;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="image2", type="string", length=60, nullable=true)
      */
     private $image2;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="image3", type="string", length=60, nullable=true)
      */
     private $image3;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="lien_facebook", type="string", length=90, nullable=true)
      */
-    private $lien_facebook;
+    private $lienFacebook;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="lien_twitter", type="string", length=90, nullable=true)
      */
-    private $lien_twitter;
+    private $lienTwitter;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="lien_youtube", type="string", length=90, nullable=true)
      */
-    private $lien_youtube;
+    private $lienYoutube;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="lien_soundcloud", type="string", length=90, nullable=true)
      */
-    private $lien_soundcloud;
+    private $lienSoundcloud;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="lien_linkedin", type="string", length=90, nullable=true)
      */
-    private $lien_linkedin;
+    private $lienLinkedin;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="lien_perso", type="string", length=90, nullable=true)
      */
-    private $lien_perso;
+    private $lienPerso;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="iframe_son1", type="string", length=120, nullable=true)
      */
-    private $iframe_son1;
+    private $iframeSon1;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="iframe_son2", type="string", length=120, nullable=true)
      */
-    private $iframe_son2;
+    private $iframeSon2;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="iframe_son3", type="string", length=120, nullable=true)
      */
-    private $iframe_son3;
+    private $iframeSon3;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="iframe_video1", type="string", length=120, nullable=true)
      */
-    private $iframe_video1;
+    private $iframeVideo1;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="iframe_video2", type="string", length=120, nullable=true)
      */
-    private $iframe_video2;
+    private $iframeVideo2;
 
     /**
-     * @ORM\Column(type="string", length=90, nullable=true)
+     * @var string|null
+     *
+     * @ORM\Column(name="iframe_video3", type="string", length=120, nullable=true)
      */
-    private $iframe_video3;
+    private $iframeVideo3;
 
     /**
-     * @ORM\ManyToOne(targetEntity="artiste", inversedBy="projet_id")
+     * @var \Categorie
+     *
+     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
+     * })
      */
-    private $artiste;
-
-    /**
-     * @ORM\OneToMany(targetEntity="artiste", mappedBy="projet")
-     */
-    private $artiste_id;
-
-    /**
-     * @ORM\OneToMany(targetEntity="categorie", mappedBy="projet")
-     */
-    private $categorie_id;
-
-    /**
-     * @ORM\OneToMany(targetEntity="groupe", mappedBy="projet")
-     */
-    private $groupe_id;
-
-    public function __construct()
-    {
-        $this->artiste_id = new ArrayCollection();
-        $this->categorie_id = new ArrayCollection();
-        $this->groupe_id = new ArrayCollection();
-    }
+    private $categorie;
 
     public function getId(): ?int
     {
@@ -179,50 +207,50 @@ class projet
         return $this;
     }
 
-    public function getValider(): ?bool
+    public function getImageProfil(): ?string
     {
-        return $this->valider;
+        return $this->imageProfil;
     }
 
-    public function setValider(bool $valider): self
+    public function setImageProfil(?string $imageProfil): self
     {
-        $this->valider = $valider;
+        $this->imageProfil = $imageProfil;
 
         return $this;
     }
 
     public function getImageLogo1(): ?string
     {
-        return $this->image_logo1;
+        return $this->imageLogo1;
     }
 
-    public function setImageLogo1(?string $image_logo1): self
+    public function setImageLogo1(?string $imageLogo1): self
     {
-        $this->image_logo1 = $image_logo1;
+        $this->imageLogo1 = $imageLogo1;
 
         return $this;
     }
 
     public function getImageLogo2(): ?string
     {
-        return $this->image_logo2;
+        return $this->imageLogo2;
     }
 
-    public function setImageLogo2(?string $image_logo2): self
+    public function setImageLogo2(?string $imageLogo2): self
     {
-        $this->image_logo2 = $image_logo2;
+        $this->imageLogo2 = $imageLogo2;
 
         return $this;
     }
 
     public function getImageLogo3(): ?string
     {
-        return $this->image_logo3;
+        return $this->imageLogo3;
     }
 
-    public function setImageLogo3(?string $image_logo3): self
+    public function setImageLogo3(?string $imageLogo3): self
     {
-        $this->image_logo3 = $image_logo3;
+        $this->imageLogo3 = $imageLogo3;
 
         return $this;
     }
@@ -265,250 +293,159 @@ class projet
 
     public function getLienFacebook(): ?string
     {
-        return $this->lien_facebook;
+        return $this->lienFacebook;
     }
 
-    public function setLienFacebook(?string $lien_facebook): self
+    public function setLienFacebook(?string $lienFacebook): self
     {
-        $this->lien_facebook = $lien_facebook;
+        $this->lienFacebook = $lienFacebook;
 
         return $this;
     }
 
     public function getLienTwitter(): ?string
     {
-        return $this->lien_twitter;
+        return $this->lienTwitter;
     }
 
-    public function setLienTwitter(?string $lien_twitter): self
+    public function setLienTwitter(?string $lienTwitter): self
     {
-        $this->lien_twitter = $lien_twitter;
+        $this->lienTwitter = $lienTwitter;
 
         return $this;
     }
 
     public function getLienYoutube(): ?string
     {
-        return $this->lien_youtube;
+        return $this->lienYoutube;
     }
 
-    public function setLienYoutube(?string $lien_youtube): self
+    public function setLienYoutube(?string $lienYoutube): self
     {
-        $this->lien_youtube = $lien_youtube;
+        $this->lienYoutube = $lienYoutube;
 
         return $this;
     }
 
     public function getLienSoundcloud(): ?string
     {
-        return $this->lien_soundcloud;
+        return $this->lienSoundcloud;
     }
 
-    public function setLienSoundcloud(?string $lien_soundcloud): self
+    public function setLienSoundcloud(?string $lienSoundcloud): self
     {
-        $this->lien_soundcloud = $lien_soundcloud;
+        $this->lienSoundcloud = $lienSoundcloud;
 
         return $this;
     }
 
     public function getLienLinkedin(): ?string
     {
-        return $this->lien_linkedin;
+        return $this->lienLinkedin;
     }
 
-    public function setLienLinkedin(?string $lien_linkedin): self
+    public function setLienLinkedin(?string $lienLinkedin): self
     {
-        $this->lien_linkedin = $lien_linkedin;
+        $this->lienLinkedin = $lienLinkedin;
 
         return $this;
     }
 
     public function getLienPerso(): ?string
     {
-        return $this->lien_perso;
+        return $this->lienPerso;
     }
 
-    public function setLienPerso(?string $lien_perso): self
+    public function setLienPerso(?string $lienPerso): self
     {
-        $this->lien_perso = $lien_perso;
+        $this->lienPerso = $lienPerso;
 
         return $this;
     }
 
     public function getIframeSon1(): ?string
     {
-        return $this->iframe_son1;
+        return $this->iframeSon1;
     }
 
-    public function setIframeSon1(?string $iframe_son1): self
+    public function setIframeSon1(?string $iframeSon1): self
     {
-        $this->iframe_son1 = $iframe_son1;
+        $this->iframeSon1 = $iframeSon1;
 
         return $this;
     }
 
     public function getIframeSon2(): ?string
     {
-        return $this->iframe_son2;
+        return $this->iframeSon2;
     }
 
-    public function setIframeSon2(?string $iframe_son2): self
+    public function setIframeSon2(?string $iframeSon2): self
     {
-        $this->iframe_son2 = $iframe_son2;
+        $this->iframeSon2 = $iframeSon2;
 
         return $this;
     }
 
     public function getIframeSon3(): ?string
     {
-        return $this->iframe_son3;
+        return $this->iframeSon3;
     }
 
-    public function setIframeSon3(?string $iframe_son3): self
+    public function setIframeSon3(?string $iframeSon3): self
     {
-        $this->iframe_son3 = $iframe_son3;
+        $this->iframeSon3 = $iframeSon3;
 
         return $this;
     }
 
     public function getIframeVideo1(): ?string
     {
-        return $this->iframe_video1;
+        return $this->iframeVideo1;
     }
 
-    public function setIframeVideo1(?string $iframe_video1): self
+    public function setIframeVideo1(?string $iframeVideo1): self
     {
-        $this->iframe_video1 = $iframe_video1;
+        $this->iframeVideo1 = $iframeVideo1;
 
         return $this;
     }
 
     public function getIframeVideo2(): ?string
     {
-        return $this->iframe_video2;
+        return $this->iframeVideo2;
     }
 
-    public function setIframeVideo2(?string $iframe_video2): self
+    public function setIframeVideo2(?string $iframeVideo2): self
     {
-        $this->iframe_video2 = $iframe_video2;
+        $this->iframeVideo2 = $iframeVideo2;
 
         return $this;
     }
 
     public function getIframeVideo3(): ?string
     {
-        return $this->iframe_video3;
+        return $this->iframeVideo3;
     }
 
-    public function setIframeVideo3(?string $iframe_video3): self
+    public function setIframeVideo3(?string $iframeVideo3): self
     {
-        $this->iframe_video3 = $iframe_video3;
+        $this->iframeVideo3 = $iframeVideo3;
 
         return $this;
     }
 
-    public function getArtiste(): ?artiste
+    public function getCategorie(): ?Categorie
     {
-        return $this->artiste;
+        return $this->categorie;
     }
 
-    public function setArtiste(?artiste $artiste): self
+    public function setCategorie(?Categorie $categorie): self
     {
-        $this->artiste = $artiste;
+        $this->categorie = $categorie;
 
         return $this;
     }
 
-    /**
-     * @return Collection|artiste[]
-     */
-    public function getArtisteId(): Collection
-    {
-        return $this->artiste_id;
-    }
 
-    public function addArtisteId(artiste $artisteId): self
-    {
-        if (!$this->artiste_id->contains($artisteId)) {
-            $this->artiste_id[] = $artisteId;
-            $artisteId->setProjet($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArtisteId(artiste $artisteId): self
-    {
-        if ($this->artiste_id->contains($artisteId)) {
-            $this->artiste_id->removeElement($artisteId);
-            // set the owning side to null (unless already changed)
-            if ($artisteId->getProjet() === $this) {
-                $artisteId->setProjet(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|categorie[]
-     */
-    public function getCategorieId(): Collection
-    {
-        return $this->categorie_id;
-    }
-
-    public function addCategorieId(categorie $categorieId): self
-    {
-        if (!$this->categorie_id->contains($categorieId)) {
-            $this->categorie_id[] = $categorieId;
-            $categorieId->setProjet($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategorieId(categorie $categorieId): self
-    {
-        if ($this->categorie_id->contains($categorieId)) {
-            $this->categorie_id->removeElement($categorieId);
-            // set the owning side to null (unless already changed)
-            if ($categorieId->getProjet() === $this) {
-                $categorieId->setProjet(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|groupe[]
-     */
-    public function getGroupeId(): Collection
-    {
-        return $this->groupe_id;
-    }
-
-    public function addGroupeId(groupe $groupeId): self
-    {
-        if (!$this->groupe_id->contains($groupeId)) {
-            $this->groupe_id[] = $groupeId;
-            $groupeId->setProjet($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGroupeId(groupe $groupeId): self
-    {
-        if ($this->groupe_id->contains($groupeId)) {
-            $this->groupe_id->removeElement($groupeId);
-            // set the owning side to null (unless already changed)
-            if ($groupeId->getProjet() === $this) {
-                $groupeId->setProjet(null);
-            }
-        }
-
-        return $this;
-    }
 }

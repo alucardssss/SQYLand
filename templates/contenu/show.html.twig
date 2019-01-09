@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contenu{% endblock %}
+
+{% block body %}
+    <h1>Contenu</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contenu.id }}</td>
+            </tr>
+            <tr>
+                <th>SummaryText1</th>
+                <td>{{ contenu.summaryText1 }}</td>
+            </tr>
+            <tr>
+                <th>SummaryLien1</th>
+                <td>{{ contenu.summaryLien1 }}</td>
+            </tr>
+            <tr>
+                <th>SummaryBouton1</th>
+                <td>{{ contenu.summaryBouton1 }}</td>
+            </tr>
+            <tr>
+                <th>SummaryText2</th>
+                <td>{{ contenu.summaryText2 }}</td>
+            </tr>
+            <tr>
+                <th>SummaryLien2</th>
+                <td>{{ contenu.summaryLien2 }}</td>
+            </tr>
+            <tr>
+                <th>SummaryBouton2</th>
+                <td>{{ contenu.summaryBouton2 }}</td>
+            </tr>
+            <tr>
+                <th>ImagePanoHead</th>
+                <td>{{ contenu.imagePanoHead }}</td>
+            </tr>
+            <tr>
+                <th>ImagePanoPresentation</th>
+                <td>{{ contenu.imagePanoPresentation }}</td>
+            </tr>
+            <tr>
+                <th>ImagePanoContact</th>
+                <td>{{ contenu.imagePanoContact }}</td>
+            </tr>
+            <tr>
+                <th>ImagePanoInscription</th>
+                <td>{{ contenu.imagePanoInscription }}</td>
+            </tr>
+            <tr>
+                <th>ImagePanoConnexion</th>
+                <td>{{ contenu.imagePanoConnexion }}</td>
+            </tr>
+            <tr>
+                <th>ImagePanoResultat</th>
+                <td>{{ contenu.imagePanoResultat }}</td>
+            </tr>
+            <tr>
+                <th>PresentationImage</th>
+                <td>{{ contenu.presentationImage }}</td>
+            </tr>
+            <tr>
+                <th>PresentationText</th>
+                <td>{{ contenu.presentationText }}</td>
+            </tr>
+            <tr>
+                <th>Mentions</th>
+                <td>{{ contenu.mentions }}</td>
+            </tr>
+            <tr>
+                <th>Presse</th>
+                <td>{{ contenu.presse }}</td>
+            </tr>
+            <tr>
+                <th>PresseDoc</th>
+                <td>{{ contenu.presseDoc }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('contenu_index') }}">back to list</a>
+
+    <a href="{{ path('contenu_edit', {'id': contenu.id}) }}">edit</a>
+
+    {{ include('contenu/_delete_form.html.twig') }}
+{% endblock %}

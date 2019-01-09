@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet{% endblock %}
+
+{% block body %}
+    <h1>Projet</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ projet.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ projet.nom }}</td>
+            </tr>
+            <tr>
+                <th>Resume</th>
+                <td>{{ projet.resume }}</td>
+            </tr>
+            <tr>
+                <th>ImageProfil</th>
+                <td>{{ projet.imageProfil }}</td>
+            </tr>
+            <tr>
+                <th>ImageLogo1</th>
+                <td>{{ projet.imageLogo1 }}</td>
+            </tr>
+            <tr>
+                <th>ImageLogo2</th>
+                <td>{{ projet.imageLogo2 }}</td>
+            </tr>
+            <tr>
+                <th>ImageLogo3</th>
+                <td>{{ projet.imageLogo3 }}</td>
+            </tr>
+            <tr>
+                <th>Image1</th>
+                <td>{{ projet.image1 }}</td>
+            </tr>
+            <tr>
+                <th>Image2</th>
+                <td>{{ projet.image2 }}</td>
+            </tr>
+            <tr>
+                <th>Image3</th>
+                <td>{{ projet.image3 }}</td>
+            </tr>
+            <tr>
+                <th>LienFacebook</th>
+                <td>{{ projet.lienFacebook }}</td>
+            </tr>
+            <tr>
+                <th>LienTwitter</th>
+                <td>{{ projet.lienTwitter }}</td>
+            </tr>
+            <tr>
+                <th>LienYoutube</th>
+                <td>{{ projet.lienYoutube }}</td>
+            </tr>
+            <tr>
+                <th>LienSoundcloud</th>
+                <td>{{ projet.lienSoundcloud }}</td>
+            </tr>
+            <tr>
+                <th>LienLinkedin</th>
+                <td>{{ projet.lienLinkedin }}</td>
+            </tr>
+            <tr>
+                <th>LienPerso</th>
+                <td>{{ projet.lienPerso }}</td>
+            </tr>
+            <tr>
+                <th>IframeSon1</th>
+                <td>{{ projet.iframeSon1 }}</td>
+            </tr>
+            <tr>
+                <th>IframeSon2</th>
+                <td>{{ projet.iframeSon2 }}</td>
+            </tr>
+            <tr>
+                <th>IframeSon3</th>
+                <td>{{ projet.iframeSon3 }}</td>
+            </tr>
+            <tr>
+                <th>IframeVideo1</th>
+                <td>{{ projet.iframeVideo1 }}</td>
+            </tr>
+            <tr>
+                <th>IframeVideo2</th>
+                <td>{{ projet.iframeVideo2 }}</td>
+            </tr>
+            <tr>
+                <th>IframeVideo3</th>
+                <td>{{ projet.iframeVideo3 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('projet_index') }}">back to list</a>
+
+    <a href="{{ path('projet_edit', {'id': projet.id}) }}">edit</a>
+
+    {{ include('projet/_delete_form.html.twig') }}
+{% endblock %}

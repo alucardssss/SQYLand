@@ -5,59 +5,82 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MessageRepository")
+ * Message
+ *
+ * @ORM\Table(name="message")
+ * @ORM\Entity
  */
 class message
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="expediteur", type="string", length=60, nullable=false)
      */
     private $expediteur;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="sujet", type="string", length=255, nullable=false)
      */
     private $sujet;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string
+     *
+     * @ORM\Column(name="texte", type="text", length=0, nullable=false)
      */
     private $texte;
 
     /**
-     * @ORM\Column(type="text")
+     * @var string|null
+     *
+     * @ORM\Column(name="liste", type="text", length=0, nullable=true)
      */
     private $liste;
 
     /**
-     * @ORM\Column(type="string", length=90)
+     * @var string|null
+     *
+     * @ORM\Column(name="fichier", type="string", length=90, nullable=true)
      */
     private $fichier;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @var bool|null
+     *
+     * @ORM\Column(name="nouveau", type="boolean", nullable=true)
      */
     private $nouveau;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @var bool|null
+     *
+     * @ORM\Column(name="en_cours", type="boolean", nullable=true)
      */
-    private $en_cours;
+    private $enCours;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @var bool|null
+     *
+     * @ORM\Column(name="termine", type="boolean", nullable=true)
      */
     private $termine;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @var bool|null
+     *
+     * @ORM\Column(name="archive", type="boolean", nullable=true)
      */
     private $archive;
 
@@ -107,7 +130,7 @@ class message
         return $this->liste;
     }
 
-    public function setListe(string $liste): self
+    public function setListe(?string $liste): self
     {
         $this->liste = $liste;
 
@@ -119,7 +142,7 @@ class message
         return $this->fichier;
     }
 
-    public function setFichier(string $fichier): self
+    public function setFichier(?string $fichier): self
     {
         $this->fichier = $fichier;
 
@@ -140,12 +163,12 @@ class message
 
     public function getEnCours(): ?bool
     {
-        return $this->en_cours;
+        return $this->enCours;
     }
 
-    public function setEnCours(?bool $en_cours): self
+    public function setEnCours(?bool $enCours): self
     {
-        $this->en_cours = $en_cours;
+        $this->enCours = $enCours;
 
         return $this;
     }
@@ -173,4 +196,6 @@ class message
 
         return $this;
     }
+
+
 }

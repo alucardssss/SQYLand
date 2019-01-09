@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Sudo{% endblock %}
+
+{% block body %}
+    <h1>Edit Sudo</h1>
+
+    {{ include('sudo/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('sudo_index') }}">back to list</a>
+
+    {{ include('sudo/_delete_form.html.twig') }}
+{% endblock %}
