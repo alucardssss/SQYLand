@@ -64,51 +64,51 @@ class ArtisteController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="artiste_show", methods={"GET"})
-     */
-    public function show(Artiste $artiste): Response
-    {
-        return $this->render('artiste/show.html.twig', [
-            'artiste' => $artiste,
-        ]);
-    }
+##   /**
+#    * @Route("/{id}", name="artiste_show", methods={"GET"})
+#    */
+#   public function show(Artiste $artiste): Response
+#   {
+#       return $this->render('artiste/show.html.twig', [
+#           'artiste' => $artiste,
+#       ]);
+#   }
 
-    /**
-     * @Route("/{id}/edit", name="artiste_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Artiste $artiste): Response
-    {
-        $form = $this->createForm(ArtisteType::class, $artiste);
-        $form->handleRequest($request);
+#   /**
+#    * @Route("/{id}/edit", name="artiste_edit", methods={"GET","POST"})
+#    */
+#   public function edit(Request $request, Artiste $artiste): Response
+#   {
+#       $form = $this->createForm(ArtisteType::class, $artiste);
+#       $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+#       if ($form->isSubmitted() && $form->isValid()) {
+#           $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('artiste_index', [
-                'id' => $artiste->getId(),
-            ]);
-        }
+#           return $this->redirectToRoute('artiste_index', [
+#               'id' => $artiste->getId(),
+#           ]);
+#       }
 
-        return $this->render('artiste/edit.html.twig', [
-            'artiste' => $artiste,
-            'form' => $form->createView(),
-        ]);
-    }
+#       return $this->render('artiste/edit.html.twig', [
+#           'artiste' => $artiste,
+#           'form' => $form->createView(),
+#       ]);
+#   }
 
-    /**
-     * @Route("/{id}", name="artiste_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Artiste $artiste): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$artiste->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($artiste);
-            $entityManager->flush();
-        }
+#   /**
+#    * @Route("/{id}", name="artiste_delete", methods={"DELETE"})
+#    */
+#   public function delete(Request $request, Artiste $artiste): Response
+#   {
+#       if ($this->isCsrfTokenValid('delete'.$artiste->getId(), $request->request->get('_token'))) {
+#           $entityManager = $this->getDoctrine()->getManager();
+#           $entityManager->remove($artiste);
+#           $entityManager->flush();
+#       }
 
-        return $this->redirectToRoute('artiste_index');
-    }
+#       return $this->redirectToRoute('artiste_index');
+#   }
 }
 
 #  use App\Entity\Artiste;
