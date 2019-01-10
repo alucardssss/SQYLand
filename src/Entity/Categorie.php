@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Categorie
  *
- * @ORM\Table(name="categorie", uniqueConstraints={@ORM\UniqueConstraint(name="code", columns={"code"})})
+ * @ORM\Table(name="Categorie", uniqueConstraints={@ORM\UniqueConstraint(name="code", columns={"code"})})
  * @ORM\Entity
  */
-class categorie
+class Categorie
 {
     /**
      * @var int

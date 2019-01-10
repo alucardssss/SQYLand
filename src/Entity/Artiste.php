@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Artiste
  *
- * @ORM\Table(name="artiste", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"})}, indexes={@ORM\Index(name="projet_id", columns={"projet_id"})})
+ * @ORM\Table(name="Artiste", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"})}, indexes={@ORM\Index(name="projet_id", columns={"projet_id"})})
  * @ORM\Entity
  */
-class artiste
+class Artiste
 {
     /**
      * @var int

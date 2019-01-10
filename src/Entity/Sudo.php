@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="sudo")
  * @ORM\Entity
  */
-class sudo
+class Sudo
 {
     /**
      * @var int

@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\artiste;
+use App\Entity\Artiste;
 use App\Form\InscriptionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
