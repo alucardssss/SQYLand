@@ -1,0 +1,48 @@
+/**********  COLOR  ************/
+
+/* Couleur des textes */
+
+
+
+.text-vanille {
+    color: rgb(225,206,154);
+}
+
+
+
+/* Couleur des boutons */
+
+.btn-vanille {
+    background-color: rgb(225, 206, 154);
+}
+
+
+
+/* Couleur des backgrounds */
+
+.bg-darkBlue {
+    background-color: #0f1023;
+}
+
+.bg-bleuRoi {
+    background-color: rgb(38, 40, 89);
+}
+
+.bg-bleuMarine {
+    background-color: rgb(23, 24, 53);
+}
+
+/******** TEXT *********/
+.text-justify {
+    text-align: justify;
+}
+
+
+
+/*************************************
+///////////////  BASE  ///////////////
+*************************************/
+
+body {
+    color: white;
+}

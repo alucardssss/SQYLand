@@ -3,100 +3,66 @@
 {% block title %}Projet{% endblock %}
 
 {% block body %}
-    <h1>Projet</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ projet.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ projet.nom }}</td>
-            </tr>
-            <tr>
-                <th>Resume</th>
-                <td>{{ projet.resume }}</td>
-            </tr>
-            <tr>
-                <th>ImageProfil</th>
-                <td>{{ projet.imageProfil }}</td>
-            </tr>
-            <tr>
-                <th>ImageLogo1</th>
-                <td>{{ projet.imageLogo1 }}</td>
-            </tr>
-            <tr>
-                <th>ImageLogo2</th>
-                <td>{{ projet.imageLogo2 }}</td>
-            </tr>
-            <tr>
-                <th>ImageLogo3</th>
-                <td>{{ projet.imageLogo3 }}</td>
-            </tr>
-            <tr>
-                <th>Image1</th>
-                <td>{{ projet.image1 }}</td>
-            </tr>
-            <tr>
-                <th>Image2</th>
-                <td>{{ projet.image2 }}</td>
-            </tr>
-            <tr>
-                <th>Image3</th>
-                <td>{{ projet.image3 }}</td>
-            </tr>
-            <tr>
-                <th>LienFacebook</th>
-                <td>{{ projet.lienFacebook }}</td>
-            </tr>
-            <tr>
-                <th>LienTwitter</th>
-                <td>{{ projet.lienTwitter }}</td>
-            </tr>
-            <tr>
-                <th>LienYoutube</th>
-                <td>{{ projet.lienYoutube }}</td>
-            </tr>
-            <tr>
-                <th>LienSoundcloud</th>
-                <td>{{ projet.lienSoundcloud }}</td>
-            </tr>
-            <tr>
-                <th>LienLinkedin</th>
-                <td>{{ projet.lienLinkedin }}</td>
-            </tr>
-            <tr>
-                <th>LienPerso</th>
-                <td>{{ projet.lienPerso }}</td>
-            </tr>
-            <tr>
-                <th>IframeSon1</th>
-                <td>{{ projet.iframeSon1 }}</td>
-            </tr>
-            <tr>
-                <th>IframeSon2</th>
-                <td>{{ projet.iframeSon2 }}</td>
-            </tr>
-            <tr>
-                <th>IframeSon3</th>
-                <td>{{ projet.iframeSon3 }}</td>
-            </tr>
-            <tr>
-                <th>IframeVideo1</th>
-                <td>{{ projet.iframeVideo1 }}</td>
-            </tr>
-            <tr>
-                <th>IframeVideo2</th>
-                <td>{{ projet.iframeVideo2 }}</td>
-            </tr>
-            <tr>
-                <th>IframeVideo3</th>
-                <td>{{ projet.iframeVideo3 }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <!--*********************  Projet *************************-->
+    <div class="row">
+        <div class="col">
+            <section class="border border-light bg-bleuRoi p-2 mb-3">
+
+                <h2>{{ projet.nom }}</h2>
+
+                <div class="row">
+
+                    <!-- icones des réseaux sociaux -->                                    
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <a href="{{ projet.lienFacebook }}" class="text-white mr-1"><i class="fab fa-facebook-square fa-2x"></i></a>
+                            <a href="{{ projet.lienTwitter }}" class="text-white mr-1"><i class="fab fa-twitter-square fa-2x"></i></a>
+                            <a href="{{ projet.lienYoutube }}" class="text-white mr-1"><i class="fab fa-youtube-square fa-2x"></i></a>
+                            <a href="{{ projet.lienSoundcloud }}" class="text-white mr-1"><i class="fab fa-soundcloud fa-2x"></i></a>
+                            <a href="{{ projet.lienLinkedin }}" class="text-white mr-1"><i class="fab fa-linkedin fa-2x"></i></a>
+                        </div>
+                    </div> <!-- /.col -->
+                
+
+
+                    <!-- lecteur audio -->                                   
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <audio controls>
+                                <source src="{{ projet.iframeSon1 }}">
+                                Votre navigateur doit être mis à jour pour lire ce fichier audio.
+                            </audio>
+                        </div>
+                    </div> <!-- /.col -->
+                
+
+
+                    <!-- vidéo Youtube -->                                   
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-sm-around justify-content-md-start">
+
+                            <div class="mr-1">
+                                <iframe width="150" height="150" src="{{ projet.iframeVideo1 }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+
+                            <div>
+                                <iframe width="150" height="150" src="{{ projet.iframeVideo2 }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                    
+                        </div>
+                    </div> <!-- /.col -->
+
+                </div> <!-- /.row -->
+
+
+            </section>
+        </div> <!-- /.col -->
+    </div> <!-- /.row -->
+
+
+
+
 
     <a href="{{ path('projet_index') }}">back to list</a>
 
