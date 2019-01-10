@@ -26,7 +26,7 @@ class FrontController extends AbstractController
      */
     public function admin()
     {
-        return $this->redirectToRoute('front' , [] ,
+        return $this->redirectToRoute('front', [],
             Response::HTTP_MOVED_PERMANENTLY);
     }
 
@@ -63,18 +63,6 @@ class FrontController extends AbstractController
         return $this->render('admin/email.html.twig');
     }
 
-
-
-    /**
-     * @Route("/{slug<[a-zA-Z0-9\-_\/]+>}",
-     *     methods={"GET"}, name="autre")
-     * @return Response
-     */
-    public function autreChemin()
-    {
-        return new Response("<html><body><h1>PAGE de la categorie</h1></body></html>");
-        return $this->render('base.html.twig');
-    }
 
     /**
      * Page de Contact
@@ -122,7 +110,7 @@ class FrontController extends AbstractController
         return $this->render('front/presse.html.twig');
     }
 
-   /**
+    /**
      * Page de connexion
      * @Route("/connexion/")
      * @return Response
@@ -143,8 +131,16 @@ class FrontController extends AbstractController
         return new Response("<html><body><h1>page d'inscription</h1></body></html>");
         return $this->render('formulaire/inscription.html.twig');
     }
+#
 
-
-
-
+    /**
+     * #    * @Route("/{slug<[a-zA-Z0-9\-_\/]+>}",
+     * #    *     methods={"GET"}, name="autre")
+     * #    * @return Response
+     * #    */
+#   public function autreChemin()
+#   {
+#       return new Response("<html><body><h1>PAGE de la categorie</h1></body></html>");
+#       return $this->render('base.html.twig');
+#   }
 }

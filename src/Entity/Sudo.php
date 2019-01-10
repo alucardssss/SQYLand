@@ -5,24 +5,33 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\SudoRepository")
+ * Sudo
+ *
+ * @ORM\Table(name="sudo")
+ * @ORM\Entity
  */
 class Sudo
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=40, nullable=false)
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=64)
+     * @var string
+     *
+     * @ORM\Column(name="mdp", type="string", length=64, nullable=false)
      */
     private $mdp;
 
@@ -54,4 +63,6 @@ class Sudo
 
         return $this;
     }
+
+
 }

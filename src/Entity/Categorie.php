@@ -5,47 +5,42 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\CategorieRepository")
+ * Categorie
+ *
+ * @ORM\Table(name="Categorie", uniqueConstraints={@ORM\UniqueConstraint(name="code", columns={"code"})})
+ * @ORM\Entity
  */
 class Categorie
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=20, nullable=false)
      */
     private $code;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @var string
+     *
+     * @ORM\Column(name="famille", type="string", length=30, nullable=false)
      */
     private $famille;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=60, nullable=false)
      */
     private $nom;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Artiste", inversedBy="categorie_id")
-     */
-    private $artiste;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Groupe", inversedBy="categorie_id")
-     */
-    private $groupe;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Projet", inversedBy="categorie_id")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $projet;
 
     public function getId(): ?int
     {
@@ -88,39 +83,4 @@ class Categorie
         return $this;
     }
 
-    public function getArtiste(): ?Artiste
-    {
-        return $this->artiste;
-    }
-
-    public function setArtiste(?Artiste $artiste): self
-    {
-        $this->artiste = $artiste;
-
-        return $this;
-    }
-
-    public function getGroupe(): ?Groupe
-    {
-        return $this->groupe;
-    }
-
-    public function setGroupe(?Groupe $groupe): self
-    {
-        $this->groupe = $groupe;
-
-        return $this;
-    }
-
-    public function getProjet(): ?Projet
-    {
-        return $this->projet;
-    }
-
-    public function setProjet(?Projet $projet): self
-    {
-        $this->projet = $projet;
-
-        return $this;
-    }
 }

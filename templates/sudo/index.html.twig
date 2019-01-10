@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sudo index{% endblock %}
+
+{% block body %}
+    <h1>Sudo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Mdp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sudo in sudos %}
+            <tr>
+                <td>{{ sudo.id }}</td>
+                <td>{{ sudo.nom }}</td>
+                <td>{{ sudo.mdp }}</td>
+                <td>
+                    <a href="{{ path('sudo_show', {'id': sudo.id}) }}">show</a>
+                    <a href="{{ path('sudo_edit', {'id': sudo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('sudo_new') }}">Create new</a>
+{% endblock %}

@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Projet;
+use App\Entity\projet;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Projet|null find($id, $lockMode = null, $lockVersion = null)
- * @method Projet|null findOneBy(array $criteria, array $orderBy = null)
- * @method Projet[]    findAll()
- * @method Projet[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method projet|null find($id, $lockMode = null, $lockVersion = null)
+ * @method projet|null findOneBy(array $criteria, array $orderBy = null)
+ * @method projet[]    findAll()
+ * @method projet[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ProjetRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Projet::class);
+        parent::__construct($registry, projet::class);
     }
 
     // /**
-    //  * @return Projet[] Returns an array of Projet objects
+    //  * @return projet[] Returns an array of projet objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ProjetRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Projet
+    public function findOneBySomeField($value): ?projet
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')
