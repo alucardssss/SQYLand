@@ -1,26 +1,24 @@
-/**********  COLOR  ************/
+/********** BASE ***********/
+
+body {
+    color: white;
+}
+
 
 /* Couleur des textes */
-
-
-
 .text-vanille {
     color: rgb(225,206,154);
 }
 
 
-
 /* Couleur des boutons */
-
 .btn-vanille {
     background-color: rgb(225, 206, 154);
 }
 
 
-
 /* Couleur des backgrounds */
-
-.bg-darkBlue {
+.bg-base {
     background-color: #0f1023;
 }
 
@@ -32,17 +30,43 @@
     background-color: rgb(23, 24, 53);
 }
 
-/******** TEXT *********/
-.text-justify {
-    text-align: justify;
+
+
+/******** PAGE ACCUEIL ********/
+
+/* Background */
+@media (min-width: 768px) {
+    .bg-accueil {
+        background-image: url(Asset/img/SQYBlueArch.jpg);
+        background-size: cover;
+        min-height: 400px;
+    }
+}
+
+@media (min-width: 992px) {
+    .bg-accueil {
+        min-height: 750px;
+    }
+
+    .recherche-wrap {
+       margin-top: 200px;
+        
+    }
 }
 
 
+/******* PAGE CONTACT *******/
 
-/*************************************
-///////////////  BASE  ///////////////
-*************************************/
+/* icones favoris sur les photos */
+.coeur {
+    top: 70px;
+    right: 3px;
+}
 
-body {
-    color: white;
+@media (min-width: 768px) {
+    .bg-contact {
+        background-image: url(Asset/img/singeGuitare.jpg);
+        background-size: cover;
+        min-height: 400px;
+    }
 }
