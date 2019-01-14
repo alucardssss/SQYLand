@@ -40,10 +40,6 @@ class InscriptionFormType extends AbstractType
                     'placeholder' => 'Saisissez votre type'
                 ]
             ])
-            ->add('resume',HiddenType::class)
-            ->add('date_inscription',HiddenType::class)
-            ->add('date_connexion',HiddenType::class)
-            ->add('projet',HiddenType::class)
             ->add('submit', SubmitType::class, [
                 'label' => "Je m'inscris !"
             ])
@@ -53,7 +49,7 @@ class InscriptionFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => artiste::class,
+            'data_class' => Artiste::class,
         ]);
     }
 }

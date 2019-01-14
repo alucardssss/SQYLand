@@ -7,6 +7,7 @@ use App\Form\InscriptionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class ArtisteController extends AbstractController
@@ -18,7 +19,8 @@ class ArtisteController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function inscription(Request $request)
+    public function inscription(Request $request,
+                                UserPasswordEncoderInterface $encoder)
 
     {
         //creation dun artiste
@@ -34,16 +36,20 @@ class ArtisteController extends AbstractController
 
         #si le Formulaire soumis et valide
 
-        if($form->isSubmitted()&& $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             # Encodage du mot de passe
 
 
+            $hash = $encoder->encodePassword($Artiste, $Artiste->getMdp());
+
+
+            $Artiste->setMdp($hash);
+
             // Sauvergarde en BDD
-           $save = $this->getDoctrine()->getManager();
-           $save->persist($Artiste);
-           $save->flush();
+            $saves = $this->getDoctrine()->getManager();
+            $saves->persist($Artiste);
+            $saves->flush();
 
             #Notification
 
@@ -59,10 +65,20 @@ class ArtisteController extends AbstractController
         //affichage dans la vue
 
         return $this->render("formulaire/inscription.html.twig", [
-            'form'  => $form->createView()
+            'form' => $form->createView()
 
         ]);
+
     }
+    /**
+     * @Route("/connexion" , name="security_connexion")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function login()
+    {
+        return $this->render('formulaire/connexion.html.twig');
+    }
+}
 
 ##   /**
 #    * @Route("/{id}", name="artiste_show", methods={"GET"})
@@ -109,7 +125,7 @@ class ArtisteController extends AbstractController
 
 #       return $this->redirectToRoute('artiste_index');
 #   }
-}
+
 
 #  use App\Entity\Artiste;
 # use App\Form\ArtisteType;
