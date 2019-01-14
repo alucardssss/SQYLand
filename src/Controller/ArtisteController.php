@@ -7,6 +7,7 @@ use App\Form\InscriptionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class ArtisteController extends AbstractController
@@ -18,7 +19,8 @@ class ArtisteController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function inscription(Request $request)
+    public function inscription(Request $request,
+                                UserPasswordEncoderInterface $encoder)
 
     {
         //creation dun artiste
@@ -34,16 +36,20 @@ class ArtisteController extends AbstractController
 
         #si le Formulaire soumis et valide
 
-        if($form->isSubmitted()&& $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             # Encodage du mot de passe
 
 
+            $hash = $encoder->encodePassword($Artiste, $Artiste->getMdp());
+
+
+            $Artiste->setMdp($hash);
+
             // Sauvergarde en BDD
-           $save = $this->getDoctrine()->getManager();
-           $save->persist($Artiste);
-           $save->flush();
+            $saves = $this->getDoctrine()->getManager();
+            $saves->persist($Artiste);
+            $saves->flush();
 
             #Notification
 
@@ -59,57 +65,68 @@ class ArtisteController extends AbstractController
         //affichage dans la vue
 
         return $this->render("formulaire/inscription.html.twig", [
-            'form'  => $form->createView()
+            'form' => $form->createView()
 
         ]);
+
     }
-
-   # /**
-   #  * @Route("/{id}", name="artiste_show", methods={"GET"})
-   #  */
-   # public function show(Artiste $artiste): Response
-   # {
-   #     return $this->render('artiste/show.html.twig', [
-   #         'artiste' => $artiste,
-   #     ]);
-    #}
-
-    #/**
-    # * @Route("/{id}/edit", name="artiste_edit", methods={"GET","POST"})
-    # */
-    #public function edit(Request $request, Artiste $artiste): Response
-    #{
-    #    $form = $this->createForm(ArtisteType::class, $artiste);
-    #    $form->handleRequest($request);
-
-    #    if ($form->isSubmitted() && $form->isValid()) {
-    #        $this->getDoctrine()->getManager()->flush();
-#
-    #        return $this->redirectToRoute('artiste_index', [
-     #           'id' => $artiste->getId(),
-    #        ]);
-    #    }
-
-    #    return $this->render('artiste/edit.html.twig', [
-    #        'artiste' => $artiste,
-    #        'form' => $form->createView(),
-    #    ]);
-    #}
-
-   # /**
-    # * @Route("/{id}", name="artiste_delete", methods={"DELETE"})
-    # */
-    #public function delete(Request $request, Artiste $artiste): Response
-    #{
-    #    if ($this->isCsrfTokenValid('delete'.$artiste->getId(), $request->request->get('_token'))) {
-    #        $entityManager = $this->getDoctrine()->getManager();
-    #        $entityManager->remove($artiste);
-    #        $entityManager->flush();
-    #    }
-
-    #    return $this->redirectToRoute('artiste_index');
-    #}
+    /**
+     * @Route("/connexion" , name="security_connexion")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function login()
+    {
+        return $this->render('formulaire/connexion.html.twig');
+    }
 }
+
+##   /**
+#    * @Route("/{id}", name="artiste_show", methods={"GET"})
+#    */
+#   public function show(Artiste $artiste): Response
+#   {
+#      return $this->render('artiste/show.html.twig', [
+#           'artiste' => $artiste,
+#       ]);
+#   }
+
+#   /**
+#    * @Route("/{id}/edit", name="artiste_edit", methods={"GET","POST"})
+#    */
+#   public function edit(Request $request, Artiste $artiste): Response
+#   {
+#       $form = $this->createForm(ArtisteType::class, $artiste);
+#       $form->handleRequest($request);
+
+#       if ($form->isSubmitted() && $form->isValid()) {
+#           $this->getDoctrine()->getManager()->flush();
+
+#           return $this->redirectToRoute('artiste_index', [
+#               'id' => $artiste->getId(),
+#           ]);
+#       }
+
+#       return $this->render('artiste/edit.html.twig', [
+#           'artiste' => $artiste,
+#           'form' => $form->createView(),
+#       ]);
+#   }
+
+#   /**
+#    * @Route("/{id}", name="artiste_delete", methods={"DELETE"})
+#    */
+#   public function delete(Request $request, Artiste $artiste): Response
+#   {
+#       if ($this->isCsrfTokenValid('delete'.$artiste->getId(), $request->request->get('_token'))) {
+#           $entityManager = $this->getDoctrine()->getManager();
+#           $entityManager->remove($artiste);
+#           $entityManager->flush();
+#       }
+
+#       return $this->redirectToRoute('artiste_index');
+#   }
+
+
 
 #  use App\Entity\Artiste;
 # use App\Form\ArtisteType;

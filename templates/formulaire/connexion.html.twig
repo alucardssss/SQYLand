@@ -5,5 +5,23 @@
 {% endblock %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-xs-6 col-xs-push-3">
 
+            <h2 class="text-center">
+                Connexion
+            </h2>
+
+
+
+            {% for message in app.flashes('notice') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {{ form(form) }}
+
+        </div>
+    </div>
 {% endblock %}
