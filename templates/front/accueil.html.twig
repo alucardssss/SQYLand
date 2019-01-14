@@ -1,9 +1,118 @@
 {% extends "layout.html.twig" %}
 
 {% block page_title %}
-    Connexion
+    Accueil
 {% endblock %}
 
 {% block content %}
+            <div class="row">
+                <div class="col-md-12">
+                    <!--*****************************************************
+                    //////////////////  CONTENU DE LA PAGE  /////////////////
+                    ******************************************************-->
 
+                    <!--////////////////  BARRE DE RECHERCHE  ////////////////-->
+                    <div class="recherche-wrap">
+
+                        <h1 class="text-center mb-3">Recherchez un de nos</span> <span class="text-vanille">talentueux artiste !</span></h1>
+
+
+                        {% include 'component/_search.html.twig' %}
+
+
+                    </div> <!-- /.recherche-wrap -->
+
+
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
+
+        </div> <!-- /.container -->
+    </div> <!-- /.container-fluid -->
+
+
+
+    <div class="container-fluid bg-bleuRoi">
+        <div class="container">
+
+            <!--***************  S'inscrire ou rechercher ***************-->
+            <div class="row">
+                <div class="col">
+                    <section class="inscription-recherche mb-3">
+
+                        <h2 class="text-center mt-3">Rejoignez nos artistes !</h2>
+
+                        <!-- S'inscrire -->
+                        <div class="row mb-3">
+
+                            <div class="col-sm-6 col-md-12 col-lg-12">
+                                <p>{{ contenu.summaryText1 }}</p>
+                            </div>
+
+                            <div class="col-sm-6 col-md-12 col-lg-12 text-center d-flex justify-content-end mt-4">
+                                <button class="btn btn-vanille my-2 my-sm-0" type="button"><a href="{{ contenu.summaryLien1 }}">{{ contenu.summaryBouton1 }}</a></button>
+                            </div>
+
+                        </div>
+
+
+                        <h2 class="text-center">Recherchez nos artistes !</h2>
+
+                        <!-- Recherche -->
+                        <div class="row">
+
+                            <div class="col-sm-6 col-md-12 col-lg-12">
+                                <p>{{ contenu.summaryText2 }}</p>
+                            </div>
+
+                            <div class="col-sm-6 col-md-12 col-lg-12 text-center d-flex justify-content-end mt-4">
+                                <button class="btn btn-vanille my-2 my-sm-0" type="button"><a href="{{ contenu.summaryLien2 }}"></a></button>
+                            </div>
+                            
+                        </div>
+
+                    </section> <!-- /.inscription-recherche -->
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
+
+
+
+            <div class="row mb-5">
+                <div class="col-sm-4">
+                    
+                    <p>{{ contenu.presentationText }}</p>
+                    
+                </div>
+
+                <div class="col-sm-8">
+
+                    <img src="{{ contenu.presentationImage }}" alt="#">
+
+                </div>
+            </div>
+
+
+            <!--***************** Présentation de l'association *********************-->
+            <div class="row">
+                <div class="col">
+
+                    <div class="media mb-3">
+                        <img src="{{ contenu.presentationImage }}" class="img-fluid mr-3" alt="#">
+                        <div class="media-body">
+                            <p>{{ contenu.presentationText }}</p>
+                        </div>
+                    </div>
+
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
+
+
+        </div> <!-- /.container -->
+    </div> <!-- /.container-fluid -->
+
+    <a href="{{ path('contenu_index') }}">back to list</a>
+
+    <a href="{{ path('contenu_edit', {'id': contenu.id}) }}">edit</a>
+
+    {{ include('contenu/_delete_form.html.twig') }}
+    
 {% endblock %}

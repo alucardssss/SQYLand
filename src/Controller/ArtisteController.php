@@ -85,7 +85,7 @@ class ArtisteController extends AbstractController
 #    */
 #   public function show(Artiste $artiste): Response
 #   {
-#       return $this->render('artiste/show.html.twig', [
+#      return $this->render('artiste/show.html.twig', [
 #           'artiste' => $artiste,
 #       ]);
 #   }
