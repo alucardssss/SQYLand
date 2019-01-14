@@ -1,58 +1,125 @@
-{% extends 'base.html.twig' %}
+
+{% extends 'layout.html.twig' %}
+
+{#{% if is_granted('ROLE_ADMIN') %}#}
 
 {% block title %}Message{% endblock %}
 
-{% block body %}
-    <h1>Message</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ message.id }}</td>
-            </tr>
-            <tr>
-                <th>Expediteur</th>
-                <td>{{ message.expediteur }}</td>
-            </tr>
-            <tr>
-                <th>Sujet</th>
-                <td>{{ message.sujet }}</td>
-            </tr>
-            <tr>
-                <th>Texte</th>
-                <td>{{ message.texte }}</td>
-            </tr>
-            <tr>
-                <th>Liste</th>
-                <td>{{ message.liste }}</td>
-            </tr>
-            <tr>
-                <th>Fichier</th>
-                <td>{{ message.fichier }}</td>
-            </tr>
-            <tr>
-                <th>Nouveau</th>
-                <td>{{ message.nouveau ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>EnCours</th>
-                <td>{{ message.enCours ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Termine</th>
-                <td>{{ message.termine ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Archive</th>
-                <td>{{ message.archive ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('message_index') }}">back to list</a>
-
-    <a href="{{ path('message_edit', {'id': message.id}) }}">edit</a>
-
-    {{ include('message/_delete_form.html.twig') }}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha256-AWdeVMUYtwLH09F6ZHxNgvJI37p+te8hJuSMo44NVm0=" crossorigin="anonymous" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 {% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-info">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+        <div class="row">
+
+            <div class="col float-left ">
+                <h1>Détail du message n° {{ message.id }}</h1>
+                <h4><a href="mailto:{{ message.expediteur }}?subject=Réponse%20de%20SQYLand ">{{ message.expediteur }}</a></h4>
+            </div>
+
+            <div class="col align-end">
+
+                    <a href="{{ path('message_index') }}" class="btn btn-primary" title="Retour à la liste">Retour à la liste</a>
+                    <a href="{{ path('message_edit', {'id': message.id}) }}" class="btn btn-warning" title="Modifier ce message">Modifier &#128393;</a>
+                    {{ include('message/_delete_form.html.twig') }}
+
+            </div>
+
+        </div>
+        <p></p>
+
+        <div class="row">
+
+            <div class="col-md-8">
+                <table class="table">
+                    <tbody>
+
+                    <tr>
+                        <th>Sujet</th>
+                        <td>{{ message.sujet }}</td>
+                    </tr>
+                    <tr>
+                        <th>Texte</th>
+                        <td>{{ message.texte | raw }}</td>
+                    </tr>
+                    <tr>
+                        <th>Liste</th>
+                        <td>{{ message.liste }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fichier</th>
+                        <td>
+                            {% if message.fichier is not same as ("404.jpg") %}
+                            <img class="img-fluid" src="{{ asset('/images/sqy/'~message.fichier) }}" alt="alt" title="{{ message.sujet }}">
+                            <br><a href="{{ asset('/images/sqy/'~message.fichier) }}" >Fichier joint</a></td>
+                            {% else %}
+                                pas de fichier
+                        {% endif %}
+
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4">
+
+                <table class="table">
+                    <tbody>
+                <tr>
+                    <th>Nouveau</th>
+                    <td>{{ message.nouveau ? '&#128504;' : '' }}</td>
+                </tr>
+                <tr>
+                    <th>EnCours</th>
+                    <td>{{ message.enCours ? '&#128504;' : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Termine</th>
+                    <td>{{ message.termine ? '&#128504;' : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Archive</th>
+                    <td>{{ message.archive ? '&#128504;' : '' }}</td>
+                </tr>
+                </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+
+{% block final_javascripts %}
+    <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha256-SUaao5Q7ifr2twwET0iyXVy0OVnuFJhGVi5E/dqEiLU=" crossorigin="anonymous"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script>
+        CKEDITOR.replace( 'form[texte]' );
+        $('.dropify').dropify({
+            messages: {
+                default: 'Glissez-d&eacute;posez un fichier ici ou cliquez',
+                replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
+                remove:  'Supprimer',
+                error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
+            }
+        });
+    </script>
+{%  endblock %}
+
+{#{% endif %}#}

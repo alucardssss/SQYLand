@@ -4,7 +4,13 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: 'en'
+
+    images_general: '%kernel.project_dir%/public/images/sqy'
+    # mailer_transport: smtp
+    # mailer_host: ssl0.ovh.net
+    # mailer_user: contact@sqyland.org
+    # mailer_password: Sqyland78180+
+
 
 services:
     # default configuration for services in *this* file

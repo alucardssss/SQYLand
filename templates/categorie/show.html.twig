@@ -1,4 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
+
+{#{% if is_granted('ROLE_ADMIN') %}#}
 
 {% block title %}Categorie{% endblock %}
 
@@ -32,3 +34,5 @@
 
     {{ include('categorie/_delete_form.html.twig') }}
 {% endblock %}
+
+{#{% endif %}#}

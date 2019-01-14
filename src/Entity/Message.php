@@ -4,11 +4,13 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Message
  *
  * @ORM\Table(name="message")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\MessageRepository")
  */
 class Message
 {
@@ -25,6 +27,13 @@ class Message
      * @var string
      *
      * @ORM\Column(name="expediteur", type="string", length=60, nullable=false)
+     * @Assert\NotBlank(message="Vous devez saisir votre adresse pour recevoir une réponse. ")
+     * @Assert\Length(max="60",
+     *  maxMessage="Vorte prénom est trop long. {{Limit}} caractères max. ")
+     * @Assert\Email(
+     *     message = "Le mail '{{ value }}' n'est pas valide. Veuillez vérifier ce champ",
+     *     mode="html5"
+     * )
      */
     private $expediteur;
 
@@ -32,13 +41,15 @@ class Message
      * @var string
      *
      * @ORM\Column(name="sujet", type="string", length=255, nullable=false)
+     *
      */
     private $sujet;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="texte", type="text", length=0, nullable=false)
+     * @Assert\NotBlank(message="Vous devez écrire un petit message . ")
+     *
      */
     private $texte;
 
@@ -50,11 +61,21 @@ class Message
     private $liste;
 
     /**
-     * @var string|null
+     * @var string
      *
      * @ORM\Column(name="fichier", type="string", length=90, nullable=true)
+     * @Assert\File(
+     *     mimeTypesMessage="Vérifiez le format de votre fichier (pdf uniquement) ",
+     *     maxSize="2M",
+     *     maxSizeMessage="Votre pdf ne doit pas être supérieur à 2Mo",
+     *     uploadNoFileErrorMessage="Il y 'a eu un problème pendant le téléchargement, veuillez réessayer SVP. ",
+     *     uploadErrorMessage="Il y 'a eu un problème pendant le téléchargement, veuillez réessayer SVP. "
+     * )
+     *
      */
     private $fichier;
+
+    #    mimeTypes={"application/pdf", "application/x-pdf"},
 
     /**
      * @var bool|null
@@ -137,12 +158,12 @@ class Message
         return $this;
     }
 
-    public function getFichier(): ?string
+    public function getFichier()
     {
         return $this->fichier;
     }
 
-    public function setFichier(?string $fichier): self
+    public function setFichier($fichier): self
     {
         $this->fichier = $fichier;
 

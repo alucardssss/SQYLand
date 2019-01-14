@@ -1,4 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
+
+{#{% if is_granted('ROLE_ADMIN') %}#}
+
 
 {% block title %}New Sudo{% endblock %}
 
@@ -9,3 +12,4 @@
 
     <a href="{{ path('sudo_index') }}">back to list</a>
 {% endblock %}
+{#{% endif %}#}

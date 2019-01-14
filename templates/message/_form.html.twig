@@ -1,4 +1,92 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{% extends 'message/index.html.twig' %}
+
+{% block body %}
+
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_label(form.expediteur) }}
+
+                {{ form_widget(form.expediteur) }}
+                {{ form_help(form.expediteur) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_label(form.sujet) }}
+                {{ form_errors(form.sujet) }}
+                {{ form_widget(form.sujet) }}
+                {{ form_help(form.sujet) }}
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-8">
+                {{ form_label(form.texte) }}
+                {{ form_errors(form.texte) }}
+                {{ form_widget(form.texte) }}
+                {{ form_help(form.texte) }}
+            </div>
+
+        {#{% if form.vars.value.nouveau == '1' %}#}
+        <div class="col-md-4">
+            {{ form_label(form.fichier) }}
+            {{ form_errors(form.fichier) }}
+            {{ form_widget(form.fichier) }}
+            {{ form_help(form.fichier) }}
+
+            <div class="row">
+                {#{% if is_granted('ROLE_ADMIN') %}#}
+
+                <div class="col-md-3 text-center">
+                    {{ form_label(form.nouveau) }}
+                    {{ form_errors(form.nouveau) }}
+                    {{ form_widget(form.nouveau) }}
+                    {{ form_help(form.nouveau) }}
+                </div>
+                <div class="col-md-3 text-center">
+                    {{ form_label(form.enCours) }}
+                    {{ form_errors(form.enCours) }}
+                    {{ form_widget(form.enCours) }}
+                    {{ form_help(form.enCours) }}
+                </div>
+                <div class="col-md-3 text-center">
+                    {{ form_label(form.termine) }}
+                    {{ form_errors(form.termine) }}
+                    {{ form_widget(form.termine) }}
+                    {{ form_help(form.termine) }}
+                </div>
+                <div class="col-md-3 text-center">
+                    {{ form_label(form.archive) }}
+                    {{ form_errors(form.archive) }}
+                    {{ form_widget(form.archive) }}
+                    {{ form_help(form.archive) }}
+                </div>
+
+                {#{% endif %}#}
+            </div>
+        </div>
+        {#{% endif %}#}
+
+
+    </div> <!-- fin du row  -->
+
+    {% if form.sujet starts with 'A' %}
+        <div class="col">
+            {{ form_label(form.liste) }}
+            {{ form_errors(form.liste) }}
+            {{ form_widget(form.liste) }}
+            {{ form_help(form.liste) }}
+        </div>
+    {% endif %}
+
+    {# <button class="btn">{{ button_label|default('Save') }}</button> #}
+
+    {{ form_end(form) }}
+
+{% endblock %}
+
