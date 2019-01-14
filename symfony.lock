@@ -299,7 +299,6 @@
     "symfony/stopwatch": {
         "version": "v4.2.2"
     },
-
     "symfony/swiftmailer-bundle": {
         "version": "2.5",
         "recipe": {
@@ -307,7 +306,8 @@
             "branch": "master",
             "version": "2.5",
             "ref": "3db029c03e452b4a23f7fc45cec7c922c2247eb8"
-
+        }
+    },
     "symfony/translation": {
         "version": "3.3",
         "recipe": {
@@ -315,7 +315,6 @@
             "branch": "master",
             "version": "3.3",
             "ref": "1fb02a6e1c8f3d4232cce485c9afa868d63b115a"
-
         }
     },
     "symfony/twig-bridge": {

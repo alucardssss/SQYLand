@@ -4541,6 +4541,8 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.2-dev"
+                }
+            },
 
             "name": "symfony/translation",
             "version": "v4.2.2",
@@ -4592,7 +4594,7 @@
             "autoload": {
                 "psr-4": {
 
-                    "Symfony\\Bundle\\SwiftmailerBundle\\": ""
+                    "Symfony\\Bundle\\SwiftmailerBundle\\": "",
 
                     "Symfony\\Component\\Translation\\": ""
 
