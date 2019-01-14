@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Artiste;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,7 +18,14 @@ class ArtisteType extends AbstractType
             ->add('mdp')
             ->add('type')
             ->add('resume')
-            ->add('image')
+            ->add('image', FileType::class, [
+                'required' => false,
+                'label' => "Image de profil",
+                'attr' => [
+                    'class' => 'dropify',
+                    'placeholder' => "Image de votre profil"
+                ]
+            ])
             ->add('dateInscription')
             ->add('dateConnexion')
             ->add('projet')

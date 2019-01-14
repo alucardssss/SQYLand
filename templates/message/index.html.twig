@@ -1,14 +1,33 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
+
+{#{% if is_granted('ROLE_ADMIN') %}#}
 
 {% block title %}Message index{% endblock %}
 
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha256-AWdeVMUYtwLH09F6ZHxNgvJI37p+te8hJuSMo44NVm0=" crossorigin="anonymous" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+{% endblock %}
+
+
 {% block body %}
-    <h1>Message index</h1>
+
+    <div class="container">
+        <h1>Liste des messages reçus</h1>
+
+
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+
+    {% endfor %}
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Expediteur</th>
                 <th>Sujet</th>
                 <th>Texte</th>
@@ -18,34 +37,70 @@
                 <th>EnCours</th>
                 <th>Termine</th>
                 <th>Archive</th>
-                <th>actions</th>
+                <th>Afficher</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
         <tbody>
         {% for message in messages %}
             <tr>
-                <td>{{ message.id }}</td>
                 <td>{{ message.expediteur }}</td>
-                <td>{{ message.sujet }}</td>
-                <td>{{ message.texte }}</td>
-                <td>{{ message.liste }}</td>
-                <td>{{ message.fichier }}</td>
-                <td>{{ message.nouveau ? 'Yes' : 'No' }}</td>
-                <td>{{ message.enCours ? 'Yes' : 'No' }}</td>
-                <td>{{ message.termine ? 'Yes' : 'No' }}</td>
-                <td>{{ message.archive ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('message_show', {'id': message.id}) }}">show</a>
-                    <a href="{{ path('message_edit', {'id': message.id}) }}">edit</a>
-                </td>
+                <td><strong><a href="{{ path('message_show', {'id': message.id}) }}">{{ message.sujet | raw }}</a></strong></td>
+                <td>{{ message.texte | summary  }}</td>
+
+                {% if message.liste is not empty %}
+                    <td class="text-center">&#128504;</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+
+                {% if message.fichier is not same as ("404.jpg") %}
+                    <td class="text-center">&#128504;</td>
+                    {% else %}
+                    <td></td>
+                {% endif %}
+                <td class="text-center" >{{ message.nouveau ? '&#128504;' : '' }}</td>
+                <td class="text-center">{{ message.enCours ? '&#128504;' : '' }}</td>
+                <td class="text-center">{{ message.termine ? '&#128504;' : '' }}</td>
+                <td class="text-center">{{ message.archive ? '&#128504;' : '' }}</td>
+                <td class="text-center"><a href="{{ path('message_show', {'id': message.id}) }}" class="btn btn-success">&#128456;</a></td>
+                <td class="text-center"><a href="{{ path('message_edit', {'id': message.id}) }}" class="btn btn-warning">&#128393;</a></td>
+                <td class="text-center">{{ include('message/_delete_form.html.twig') }}</td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="11">no records found</td>
+                <td colspan="11">Désolé, la liste est vide  &#127773; </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('message_new') }}">Create new</a>
+    <div class="text-center">
+        <a href="{{ path('message_new') }}" class="btn btn-primary" title="Créer un nouveau message">Créer un nouveau message</a>
+    </div>
+
+ </div>
+
 {% endblock %}
+
+
+{% block final_javascripts %}
+    <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha256-SUaao5Q7ifr2twwET0iyXVy0OVnuFJhGVi5E/dqEiLU=" crossorigin="anonymous"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script>
+        CKEDITOR.replace( 'form[texte]' );
+        $('.dropify').dropify({
+            messages: {
+                default: 'Glissez-d&eacute;posez un fichier ici ou cliquez',
+                replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
+                remove:  'Supprimer',
+                error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
+            }
+        });
+    </script>
+{%  endblock %}
+
+{#{% endif %}#}
+

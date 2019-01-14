@@ -1,4 +1,5 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
+{#{% if is_granted('ROLE_ADMIN') %}#}
 
 {% block title %}Contenu{% endblock %}
 
@@ -88,3 +89,5 @@
 
     {{ include('contenu/_delete_form.html.twig') }}
 {% endblock %}
+
+{#{% endif %}#}
