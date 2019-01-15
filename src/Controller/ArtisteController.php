@@ -8,6 +8,10 @@ use App\Entity\Projet;
 use App\Form\ArtisteType;
 use App\Form\InscriptionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\MimeType\ExtensionGuesser;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,7 +25,7 @@ class ArtisteController extends AbstractController
 {
     /**
      * Inscriptions d'un artiste
-     * @Route("/inscription", name="artiste_inscription")
+     * @Route("/inscription", name="artiste_inscription", methods={"GET","POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
@@ -31,14 +35,11 @@ class ArtisteController extends AbstractController
 
     {
         //creation dun artiste
-
         $Artiste = new artiste();
 
-
         //creation du formulaire artiste-ormType
-
-        $form = $this->createForm(ArtisteType::class, $Artiste)
-            ->handleRequest($request);
+        $form = $this->createForm(ArtisteType::class, $Artiste);
+        $form->handleRequest($request);
 
 
         #si le Formulaire soumis et valide
@@ -46,12 +47,41 @@ class ArtisteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             # Encodage du mot de passe
-
-
             $hash = $encoder->encodePassword($Artiste, $Artiste->getMdp());
-
-
             $Artiste->setMdp($hash);
+
+            // récupération des données
+            $Artiste = $form->getData();
+
+            if ($Artiste->getImage() !== null ) {
+                /**
+                 * Le fichier envoyé est renommer avec un nom unique
+                 *
+                 * @var UploadedFile $file
+                 * @var File  $file
+                 */
+                $file = $Artiste->getImage();
+
+                $fileName = $this->generateUniqueFileName()
+                    . '.' . $file->guessExtension();
+
+                // enregistrement dans le dossier
+                try {
+                    $file->move(
+                        $this->getParameter('images_general'),
+                        $fileName
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'message' property to store the file name
+                // instead of its contents
+                $Artiste->setImage($fileName);
+
+            } else {
+                $Artiste->setImage('404.jpg');
+            }
 
             // Sauvergarde en BDD
             $saves = $this->getDoctrine()->getManager();
@@ -59,7 +89,6 @@ class ArtisteController extends AbstractController
             $saves->flush();
 
             #Notification
-
             $this->addFlash('notice',
                 'felicitations vous pouvez vous connecter');
 
@@ -72,29 +101,21 @@ class ArtisteController extends AbstractController
         //affichage dans la vue
 
         return $this->render("artiste/new.html.twig", [
+            'artiste' => $Artiste,
             'form' => $form->createView()
 
         ]);
 
     }
 
-  #  /**
-  #   * @Route("/connexion" , name="security_connexion")
-  #   * @return \Symfony\Component\HttpFoundation\Response
-  #   */
-  #  public function login()
-  #  {
-  #      return $this->render('formulaire/connexion.html.twig');
-  #  }
-
 
    /**
     * @Route("/{id}", name="artiste_show", methods={"GET"})
     */
-   public function show(Artiste $artiste, Categorie $categorie, Projet $projet): Response
+   public function show(Artiste $Artiste, Categorie $categorie, Projet $projet): Response
    {
       return $this->render('artiste/show.html.twig', [
-           'artiste' => $artiste,
+           'artiste' => $Artiste,
           'categorie' => $categorie,
           'projet' => $projet
        ]);
@@ -103,21 +124,76 @@ class ArtisteController extends AbstractController
    /**
     * @Route("/{id}/edit", name="artiste_edit", methods={"GET","POST"})
     */
-   public function edit(Request $request, Artiste $artiste): Response
+   public function edit(Request $request, Artiste $Artiste,
+                        UserPasswordEncoderInterface $encoder): Response
    {
-       $form = $this->createForm(ArtisteType::class, $artiste);
-       $form->handleRequest($request);
+
+       # On récupère l'image du message
+       $file = $Artiste->getImage();
+
+       /**
+        * Notre formulaire attend une instance de File
+        * pour l'edition de la file.
+        */
+       $Artiste->setImage(
+           new File($this->getParameter('images_general')
+               . '/' . $file)
+       );
+
+       $form = $this->createForm(ArtisteType::class, $Artiste)
+           ->handleRequest($request);
+
+       # Encodage du mot de passe
+       $hash = $encoder->encodePassword($Artiste, $Artiste->getMdp());
+       $Artiste->setMdp($hash);
 
        if ($form->isSubmitted() && $form->isValid()) {
-           $this->getDoctrine()->getManager()->flush();
+
+           if ($Artiste->getImage() !== null) {
+               /**
+                * Le fichier envoyé est renommer avec un nom unique
+                *
+                * @var UploadedFile $file
+                * @var File $file
+                */
+               $file = $Artiste->getImage();
+
+               $fileName = $this->generateUniqueFileName()
+                   . '.' . $file->guessExtension();
+
+               // enregistrement dans le dossier
+               try {
+                   $file->move(
+                       $this->getParameter('images_general'),
+                       $fileName
+                   );
+               } catch (FileException $e) {
+                   // ... handle exception if something happens during file upload
+               }
+
+               // updates the 'message' property to store the file name
+               // instead of its contents
+               $Artiste->setImage($fileName);
+
+           } else {
+               $Artiste->setImage('404.jpg');
+           }
+
+           // Sauvergarde en BDD
+           $saves = $this->getDoctrine()->getManager();
+           $saves->persist($Artiste);
+           $saves->flush();
+
+           #Notification
+           $this->addFlash('notice',
+               'Votre profil est modifié');
 
            return $this->redirectToRoute('artiste_index', [
-               'id' => $artiste->getId(),
+               'id' => $Artiste->getId(),
            ]);
        }
-
        return $this->render('artiste/edit.html.twig', [
-           'artiste' => $artiste,
+           'artiste' => $Artiste,
            'form' => $form->createView(),
        ]);
    }
@@ -125,11 +201,11 @@ class ArtisteController extends AbstractController
    /**
     * @Route("/{id}", name="artiste_delete", methods={"DELETE"})
     */
-   public function delete(Request $request, Artiste $artiste): Response
+   public function delete(Request $request, Artiste $Artiste): Response
    {
-       if ($this->isCsrfTokenValid('delete'.$artiste->getId(), $request->request->get('_token'))) {
+       if ($this->isCsrfTokenValid('delete'.$Artiste->getId(), $request->request->get('_token'))) {
            $entityManager = $this->getDoctrine()->getManager();
-           $entityManager->remove($artiste);
+           $entityManager->remove($Artiste);
            $entityManager->flush();
        }
 
@@ -142,12 +218,12 @@ class ArtisteController extends AbstractController
      */
     public function index(): Response
     {
-        $artistes = $this->getDoctrine()
+        $Artiste = $this->getDoctrine()
             ->getRepository(Artiste::class)
             ->findAll();
 
         return $this->render('artiste/index.html.twig', [
-            'artistes' => $artistes,
+            'artistes' => $Artiste,
         ]);
     }
 
@@ -173,4 +249,39 @@ class ArtisteController extends AbstractController
   #          'form' => $form->createView(),
   #      ]);
   #  }
+
+    private function generateUniqueFileName()
+    {
+        // md5() reduces the similarity of the file names generated by
+        // uniqid(), which is based on timestamps
+        return md5(uniqid());
+    }
+
+    /**
+     * Returns the extension based on the mime type.
+     *
+     * If the mime type is unknown, returns null.
+     *
+     * This method uses the mime type as guessed by getMimeType()
+     * to guess the file extension.
+     *
+     * @return string|null The guessed extension or null if it cannot be guessed
+     *
+     * @see ExtensionGuesser
+     * @see getMimeType()
+     */
+    public function guessExtension()
+    {
+        $type = $this->getMimeType();
+        $guesser = ExtensionGuesser::getInstance();
+
+        return $guesser->guess($type);
+    }
+
+    private function getMimeType()
+    {
+
+    }
+
+
 }

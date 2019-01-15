@@ -175,7 +175,6 @@ class ProjetType extends AbstractType
                 ]
             ] )
             ->add('submit', SubmitType::class, [
-
                 'label' => "c'est parti !",
                 'attr' => [
                     'placeholder' => "c'est parti !"

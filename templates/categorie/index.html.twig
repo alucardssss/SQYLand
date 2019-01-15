@@ -1,9 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
+
+{#{% if is_granted('ROLE_ADMIN') %}#}
 
 {% block title %}Categorie index{% endblock %}
 
-{% block body %}
-    <h1>Categorie index</h1>
+{% block content %}
+
+<div class="container">
+    <h1>Liste des différentes catégories</h1>
+
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+
+    {% endfor %}
 
     <table class="table">
         <thead>
@@ -35,5 +46,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('categorie_new') }}">Create new</a>
+    <div class="text-center">
+        <a href="{{ path('categorie_new') }}" class="btn btn-primary" title="Créer une nouvelle">Créer une nouvelle catégorie</a>
+    </div>
+
+</div>
 {% endblock %}
+
+{#{% endif %}#}
