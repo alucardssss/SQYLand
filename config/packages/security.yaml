@@ -5,6 +5,7 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
+
         in_database:
             entity:
                 class: App\Entity\Artiste
@@ -15,23 +16,6 @@ security:
             security: false
         main:
             anonymous: true
-
-            provider: in_database
-            form_login:
-                login_path: app_login
-                check_path: app_login
-                username_parameter: app_login[email]
-                password_parameter: app_login[password]
-
-
-
-            guard:
-                authenticators:
-                    - App\Security\LoginFormAuthenticator
-
-
-
-
             # activate different ways to authenticate
 
             # http_basic: true
@@ -39,9 +23,22 @@ security:
 
             # form_login: true
             # https://symfony.com/doc/current/security/form_login_setup.html
+            form_login:
+                login_path: security_connexion
+                check_path: security_connexion
+                username_parameter: security_connexion[email]
+                password_parameter: security_connexion[mdp]
+                default_target_path: index
+            provider: in_database
 
-    # Easy way to control access for large sections of your site
+
+
+        # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/profile, roles: ROLE_ARTISTE }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+
+    role_hierarchy:
+        ROLE_ARTISTE: ROLE_USER
+        ROLE_ADMIN: ROLE_ARTISTE
