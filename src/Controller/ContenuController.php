@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/contenu")
+ * @Route("/")
  */
 class ContenuController extends AbstractController
 {
     /**
-     * @Route("/", name="contenu_index", methods={"GET"})
+     * @Route("/contenu/liste", name="contenu_index", methods={"GET"})
      */
     public function index(): Response
     {
@@ -29,7 +29,7 @@ class ContenuController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="contenu_new", methods={"GET","POST"})
+     * @Route("/contenu/new", name="contenu_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -52,17 +52,49 @@ class ContenuController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="contenu_show", methods={"GET"})
+     * @Route("/", name="contenu_show")
      */
-    public function show(Contenu $contenu): Response
+    public function show(): Response
     {
+        $contenu = $this->getDoctrine()
+            ->getRepository(Contenu::class)->find('1');
+
         return $this->render('contenu/show.html.twig', [
             'contenu' => $contenu,
         ]);
+
     }
 
     /**
-     * @Route("/{id}/edit", name="contenu_edit", methods={"GET","POST"})
+     * @Route("/mentions", name="contenu_mentions")
+     */
+    public function mentions(): Response
+    {
+        $contenu = $this->getDoctrine()
+            ->getRepository(Contenu::class)->find('1');
+
+        return $this->render('contenu/mentions.html.twig', [
+            'contenu' => $contenu,
+        ]);
+
+    }
+
+    /**
+     * @Route("/presse", name="contenu_presse")
+     */
+    public function presse(): Response
+    {
+        $contenu = $this->getDoctrine()
+            ->getRepository(Contenu::class)->find('1');
+
+        return $this->render('contenu/presse.html.twig', [
+            'contenu' => $contenu,
+        ]);
+
+    }
+
+    /**
+     * @Route("/contenu/{id}/edit", name="contenu_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Contenu $contenu): Response
     {
@@ -84,7 +116,7 @@ class ContenuController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="contenu_delete", methods={"DELETE"})
+     * @Route("/contenu/{id}", name="contenu_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Contenu $contenu): Response
     {

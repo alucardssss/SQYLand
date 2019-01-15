@@ -169,9 +169,10 @@ class Projet
     private $iframeVideo3;
 
     /**
-     * @var \Categorie
      *
-     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\ManyToOne(targetEntity="Categorie",
+     *     cascade={"persist"},
+     *     inversedBy="artistes")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      * })
@@ -435,15 +436,21 @@ class Projet
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
+    /**
+     * @return mixed
+     */
+    public function getCategorie()
     {
         return $this->categorie;
     }
 
-    public function setCategorie(?Categorie $categorie): self
+    /**
+     * @param $categorie
+     * @return Artiste
+     */
+    public function setCategorie($categorie)
     {
         $this->categorie = $categorie;
-
         return $this;
     }
 
