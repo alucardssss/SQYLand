@@ -11,24 +11,36 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Inscription</h1>
 
-        <div class="text-left">
-            <a href="{{ path('artiste_index') }}" class="btn btn-primary" title="Retour">Retour</a>
-        </div>
+            <div class="container">
 
-
-        {% for message in app.flashes('notice') %}
-            <div class="alert alert-info">
-                {{ message }}
-            </div>
-
-        {% endfor %}
-
-        {# {{ include('artiste/_form.html.twig') }} #}
+                <!--******** Bouton retour *********-->
+                <div class="text-left">
+                    <a href="{{ path('artiste_index') }}" class="btn btn-vanille" title="Retour">Retour</a>
+                </div>
 
 
-        {{ form(form, {attr:{novalidate: 'novalidate' }}) }}
-    </div>
+
+                <h1 class="text-white my-5">Inscription</h1>
+
+
+                {% for message in app.flashes('notice') %}
+                    <div class="alert alert-info">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+                {# {{ include('artiste/_form.html.twig') }} #}
+
+
+                <!--********* Formulaire **********-->
+                {{ form(form, {attr:{novalidate: 'novalidate' }}) }}
+
+
+            </div> <!-- /.container -->
+
+        </div> <!-- /.container -->
+    </div> <!-- /.container-fluid -->
+
 {% endblock %}

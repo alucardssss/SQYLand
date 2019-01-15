@@ -1,26 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}New Message{% endblock %}
+{% block title %}Contact{% endblock %}
 
-{% block body %}
+{% block content %}
 
     <div class="container">
-        <h1>Créer un nouveau message</h1>
 
-            <div class="text-left">
-                <a href="{{ path('message_index') }}" class="btn btn-primary" title="Retour à la liste">Retour à la liste</a>
+        <h1>Contact</h1>
+
+        <div class="text-left">
+            <a href="{{ path('message_index') }}" class="btn btn-primary" title="Retour à la liste">Retour à la liste</a>
+        </div>
+
+
+
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-info">
+                {{ message }}
             </div>
+        {% endfor %}
 
 
-            {% for message in app.flashes('notice') %}
-                <div class="alert alert-info">
-                    {{ message }}
-                </div>
+        {{ include('message/_form.html.twig') }}
 
-            {% endfor %}
-
-            {{ include('message/_form.html.twig') }}
 
     </div>
+    
 
 {% endblock %}

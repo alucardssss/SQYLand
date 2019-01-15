@@ -1,33 +1,30 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout-accueil.html.twig' %}
 
-{% block title %}Contenu{% endblock %}
+{% block title %}Accueil{% endblock %}
 
-{% block body %}
+{% block content %}
 
-    {% include 'component/_header.html.twig' %}
+            <div class="row">
+                <div class="col-md-12">
+                    <!--*****************************************************
+                    //////////////////  CONTENU DE LA PAGE  /////////////////
+                    ******************************************************-->
 
-    <div class="row">
-        <div class="col-md-12">
-            <!--*****************************************************
-            //////////////////  CONTENU DE LA PAGE  /////////////////
-            ******************************************************-->
+                    <!--////////////////  BARRE DE RECHERCHE  ////////////////-->
+                    <div class="recherche-wrap">
 
-            <!--////////////////  BARRE DE RECHERCHE  ////////////////-->
-            <div class="recherche-wrap">
+                        <h1 class="text-center mb-3">Recherchez un de nos <span class="text-vanille">talentueux artiste </span>!</h1>
 
-                <h1 class="text-center mb-3">Recherchez un de nos
-                    </span> <span class="text-vanille">talentueux artiste !</span></h1>
-
-                {% include 'component/_search.html.twig' %}
+                        {% include 'component/_search.html.twig' %}
 
 
-            </div> <!-- /.recherche-wrap -->
+                    </div> <!-- /.recherche-wrap -->
 
 
-        </div> <!-- /.col -->
-    </div> <!-- /.row -->
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
 
-    </div> <!-- /.container -->
+        </div> <!-- /.container -->
     </div> <!-- /.container-fluid -->
 
 
@@ -45,12 +42,12 @@
                         <!-- S'inscrire -->
                         <div class="row mb-3">
 
-                            <div class="col-sm-6 col-md-12 col-lg-12">
-                                <p>{{ contenu.summaryText1 }}</p>
+                            <div class="col-12">
+                                <p>{{ contenu.summaryText2 }}</p>
                             </div>
 
-                            <div class="col-sm-6 col-md-12 col-lg-12 text-center d-flex justify-content-end mt-4">
-                                <button class="btn btn-vanille my-2 my-sm-0" type="button"><a href="{{ contenu.summaryLien1 }}">{{ contenu.summaryBouton1 }}</a></button>
+                            <div class="col-12 text-center d-flex justify-content-end mt-4">
+                                <button class="btn btn-vanille my-2" type="button"><a href="{{ contenu.summaryLien2 }}" class="text-reset">{{ contenu.summaryBouton2 }}</a></button>
                             </div>
 
                         </div>
@@ -61,12 +58,12 @@
                         <!-- Recherche -->
                         <div class="row">
 
-                            <div class="col-sm-6 col-md-12 col-lg-12">
-                                <p>{{ contenu.summaryText2 }}</p>
+                            <div class="col-12">
+                                <p>{{ contenu.summaryText1 }}</p>
                             </div>
 
-                            <div class="col-sm-6 col-md-12 col-lg-12 text-center d-flex justify-content-end mt-4">
-                                <button class="btn btn-vanille my-2 my-sm-0" type="button"><a href="{{ contenu.summaryLien2 }}"></a></button>
+                            <div class="col-12 text-center d-flex justify-content-end mt-4">
+                                <button class="btn btn-vanille my-2" type="button"><a href="{{ contenu.summaryLien1 }}" class="text-reset"></a>{{ contenu.summaryBouton1 }}</button>
                             </div>
 
                         </div>
@@ -75,21 +72,6 @@
                 </div> <!-- /.col -->
             </div> <!-- /.row -->
 
-
-
-            <div class="row mb-5">
-                <div class="col-sm-4">
-
-                    <p>{{ contenu.presentationText }}</p>
-
-                </div>
-
-                <div class="col-sm-8">
-
-                    <img src="{{ contenu.presentationImage }}" alt="#">
-
-                </div>
-            </div>
 
 
             <!--***************** Présentation de l'association *********************-->
@@ -118,7 +100,7 @@
     {{ include('contenu/_delete_form.html.twig') }}
     {#{% endif %}#}
 
-    {% include 'component/_footer.html.twig' %}
+
 
 {% endblock %}
 

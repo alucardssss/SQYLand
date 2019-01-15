@@ -1,90 +1,171 @@
-{% extends 'message/index.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block body %}
+{% block title %}Artiste{% endblock %}
 
+{% block content %}
 
-    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <!--*****************************************************
+    //////////////////  CONTENU DE LA PAGE  /////////////////
+    ******************************************************-->
 
-        <div class="row">
-            <div class="col-md-6">
-                {{ form_label(form.expediteur) }}
+    <!--///////////////////  FORMULAIRE  //////////////////-->
 
-                {{ form_widget(form.expediteur) }}
-                {{ form_help(form.expediteur) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                {{ form_label(form.sujet) }}
-                {{ form_errors(form.sujet) }}
-                {{ form_widget(form.sujet) }}
-                {{ form_help(form.sujet) }}
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-8">
-                {{ form_label(form.texte) }}
-                {{ form_errors(form.texte) }}
-                {{ form_widget(form.texte) }}
-                {{ form_help(form.texte) }}
-            </div>
-
-
-        <div class="col-md-4">
-            {{ form_label(form.fichier) }}
-            {{ form_errors(form.fichier) }}
-            {{ form_widget(form.fichier) }}
-            {{ form_help(form.fichier) }}
-
-            <div class="row">
-                {#{% if is_granted('ROLE_ADMIN') %}#}
-
-                <div class="col-md-3 text-center">
-                    {{ form_label(form.nouveau) }}
-                    {{ form_errors(form.nouveau) }}
-                    {{ form_widget(form.nouveau) }}
-                    {{ form_help(form.nouveau) }}
-                </div>
-                <div class="col-md-3 text-center">
-                    {{ form_label(form.enCours) }}
-                    {{ form_errors(form.enCours) }}
-                    {{ form_widget(form.enCours) }}
-                    {{ form_help(form.enCours) }}
-                </div>
-                <div class="col-md-3 text-center">
-                    {{ form_label(form.termine) }}
-                    {{ form_errors(form.termine) }}
-                    {{ form_widget(form.termine) }}
-                    {{ form_help(form.termine) }}
-                </div>
-                <div class="col-md-3 text-center">
-                    {{ form_label(form.archive) }}
-                    {{ form_errors(form.archive) }}
-                    {{ form_widget(form.archive) }}
-                    {{ form_help(form.archive) }}
-                </div>
-
-                {#{% endif %}#}
-            </div>
-        </div>
-
-
-
-    </div> <!-- fin du row  -->
-
+    <div class="row">
         <div class="col">
-            {{ form_label(form.liste) }}
-            {{ form_errors(form.liste) }}
-            {{ form_widget(form.liste) }}
-            {{ form_help(form.liste) }}
-        </div>
+            <section class="formulaire">
 
-    {# <button class="btn">{{ button_label|default('Save') }}</button> #}
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        
+                <div class="form-group">
+                    {{ form_label(form.expediteur) }}
 
-    {{ form_end(form) }}
+                    {{ form_widget(form.expediteur) }}
+                    {{ form_help(form.expediteur) }}
+                </div>
+        
+
+                <div class="form-group">
+                    {{ form_label(form.sujet) }}
+                    {{ form_errors(form.sujet) }}
+                    {{ form_widget(form.sujet) }}
+                    {{ form_help(form.sujet) }}
+                </div>
+
+
+                <div class="form-group">
+                    {{ form_label(form.texte) }}
+                    {{ form_errors(form.texte) }}
+                    {{ form_widget(form.texte) }}
+                    {{ form_help(form.texte) }}
+                </div>
+
+                <div class="col">
+                    {{ form_label(form.liste) }}
+                    {{ form_errors(form.liste) }}
+                    {{ form_widget(form.liste) }}
+                    {{ form_help(form.liste) }}
+                </div>
+
+        
+
+                    {{ form_end(form) }}
+            </section>
+        </div> <!-- /.col -->
+    </div> <!-- /.row -->
+
+
+
+        {#{% if form.vars.value.nouveau == '1' %}#}
+
+            <div class="form-group">
+                {{ form_label(form.fichier) }}
+                {{ form_errors(form.fichier) }}
+                {{ form_widget(form.fichier) }}
+                {{ form_help(form.fichier) }}
+
+
+                <div class="row">
+                    <div class="col">
+
+
+                        {#{% if is_granted('ROLE_ADMIN') %}#}
+
+                            <!--///////////////////  ADMIN-CHECKBOX  //////////////////-->
+                            <section class="admin-checkbox d-flex">
+
+                                <div>
+                                    {{ form_label(form.nouveau) }}
+                                    {{ form_errors(form.nouveau) }}
+                                    {{ form_widget(form.nouveau) }}
+                                    {{ form_help(form.nouveau) }}
+                                </div>
+
+                                <div>
+                                    {{ form_label(form.enCours) }}
+                                    {{ form_errors(form.enCours) }}
+                                    {{ form_widget(form.enCours) }}
+                                    {{ form_help(form.enCours) }}
+                                </div>
+
+                                <div>
+                                    {{ form_label(form.termine) }}
+                                    {{ form_errors(form.termine) }}
+                                    {{ form_widget(form.termine) }}
+                                    {{ form_help(form.termine) }}
+                                </div>
+
+                                <div>
+                                    {{ form_label(form.archive) }}
+                                    {{ form_errors(form.archive) }}
+                                    {{ form_widget(form.archive) }}
+                                    {{ form_help(form.archive) }}
+                                </div>
+
+                            </section> <!-- /.admin-checkbox -->
+
+                        {#{% endif %}#}
+
+
+                    </div> <!-- /.col -->
+                </div> <!-- /.row -->
+
+
+            </div> <!-- /.form.fichier -->
+
+        {#{% endif %}#}
+
+
+
+    
+
+      <!--///////////////////  FAVORIS  //////////////////-->
+      <div class="row">
+            <div class="col border my-3 bg-bleuRoi">
+                <section>
+
+                        <h5 class="my-3">Selectionnez un ou plusieurs favoris à contacter</h5>
+
+                    <div class="row ">
+
+                        
+
+
+
+                        <div class="col-xs-4 mb-3 ml-3 position-relative">
+                            <img src="http://placehold.it/90x90" alt="#" class="img-fluid">
+                            <i class="coeur fas fa-heart fa-lg text-white position-absolute"></i>
+                        </div>
+
+                        <div class="col-xs-4 mb-3 ml-3 position-relative">
+                            <img src="http://placehold.it/90x90" alt="#" class="img-fluid">
+                            <i class="coeur fas fa-heart fa-lg text-white position-absolute"></i>
+                        </div>
+
+                        <div class="col-xs-4 mb-3 ml-3 position-relative">
+                            <img src="http://placehold.it/90x90" alt="#" class="img-fluid">
+                            <i class="coeur fas fa-heart fa-lg text-white position-absolute"></i>
+                        </div>
+
+                        <div class="col-xs-4 mb-3 ml-3 position-relative">
+                            <img src="http://placehold.it/90x90" alt="#" class="img-fluid">
+                            <i class="coeur fas fa-heart fa-lg text-white position-absolute"></i>
+                        </div>
+
+                        <div class="col-xs-4 mb-3 ml-3 position-relative">
+                            <img src="http://placehold.it/90x90" alt="#" class="img-fluid">
+                            <i class="coeur fas fa-heart fa-lg text-white position-absolute"></i>
+                        </div>
+
+                    </div>
+
+                </section>
+            </div> <!-- /.col -->
+        </div> <!-- /.row -->
+        
+        
+
+    </div> <!-- /.container -->
+</div> <!-- /.container-fluid -->
 
 {% endblock %}
 
