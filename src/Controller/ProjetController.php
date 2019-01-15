@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProjetController extends AbstractController
 {
     /**
-     * @Route("/", name="projet_index", methods={"GET"})
+     * @Route("/liste", name="projet_index", methods={"GET"})
      */
     public function index(): Response
     {
@@ -29,7 +29,7 @@ class ProjetController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="projet_new", methods={"GET","POST"})
+     * @Route("/", name="projet_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {

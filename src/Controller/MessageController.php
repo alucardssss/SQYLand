@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MessageController extends AbstractController
 {
     /**
-     * @Route("/", name="message_index", methods={"GET"})
+     * @Route("/liste", name="message_index", methods={"GET"})
      */
     public function index(): Response
     {
@@ -35,7 +35,7 @@ class MessageController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="message_new", methods={"GET","POST"})
+     * @Route("/", name="message_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      * @throws \Exception

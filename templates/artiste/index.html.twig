@@ -1,49 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}Artiste index{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha256-AWdeVMUYtwLH09F6ZHxNgvJI37p+te8hJuSMo44NVm0=" crossorigin="anonymous" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+{% endblock %}
+
+
 {% block body %}
-    <h1>Artiste index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Mdp</th>
-                <th>Type</th>
-                <th>Resume</th>
-                <th>Image</th>
-                <th>DateInscription</th>
-                <th>DateConnexion</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for artiste in artistes %}
-            <tr>
-                <td>{{ artiste.id }}</td>
-                <td>{{ artiste.nom }}</td>
-                <td>{{ artiste.email }}</td>
-                <td>{{ artiste.mdp }}</td>
-                <td>{{ artiste.type }}</td>
-                <td>{{ artiste.resume }}</td>
-                <td>{{ artiste.image }}</td>
-                <td>{{ artiste.dateInscription ? artiste.dateInscription|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ artiste.dateConnexion ? artiste.dateConnexion|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('artiste_show', {'id': artiste.id}) }}">show</a>
-                    <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{% include 'component/_header.html.twig' %}
 
-    <a href="{{ path('artiste_new') }}">Create new</a>
+<div class="container">
+
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <h2>Liste des artistes</h2>
+
+    <div class="card-deck">
+    {% for artiste in artistes %}
+
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 m-0 p-0">
+        <div class="card" >
+            <a href="{{ path('artiste_show', {'id': artiste.id}) }}">
+            <img src="{{ asset('/images/sqy/'~artiste.image) }}" class="card-img-top" alt="{{ artiste.nom }}">
+            </a>
+
+            <div class="card-body">
+                <h2 class="card-title">{{ artiste.nom }}</h2>
+                <p class="card-text">{{ artiste.resume | summary }}</p>
+                <a href="{{ path('artiste_show', {'id': artiste.id}) }}" class="btn btn-success">Voir le profil</a>
+                <a href="#" class="btn btn-success" title="Ajouter aux favoris">&#128150;</a>
+            </div>
+        </div>
+</div>
+    {% endfor %}
+    </div>
+
+    <a href="{{ path('artiste_inscription') }}">Create new</a>
+
+</div>
+    {% include 'component/_footer.html.twig' %}
 {% endblock %}
