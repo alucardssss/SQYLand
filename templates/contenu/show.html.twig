@@ -1,95 +1,124 @@
 {% extends 'layout.html.twig' %}
-{#{% if is_granted('ROLE_ADMIN') %}#}
 
 {% block title %}Contenu{% endblock %}
 
 {% block body %}
-    <h1>Contenu</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ contenu.id }}</td>
-            </tr>
-            <tr>
-                <th>SummaryText1</th>
-                <td>{{ contenu.summaryText1 }}</td>
-            </tr>
-            <tr>
-                <th>SummaryLien1</th>
-                <td>{{ contenu.summaryLien1 }}</td>
-            </tr>
-            <tr>
-                <th>SummaryBouton1</th>
-                <td>{{ contenu.summaryBouton1 }}</td>
-            </tr>
-            <tr>
-                <th>SummaryText2</th>
-                <td>{{ contenu.summaryText2 }}</td>
-            </tr>
-            <tr>
-                <th>SummaryLien2</th>
-                <td>{{ contenu.summaryLien2 }}</td>
-            </tr>
-            <tr>
-                <th>SummaryBouton2</th>
-                <td>{{ contenu.summaryBouton2 }}</td>
-            </tr>
-            <tr>
-                <th>ImagePanoHead</th>
-                <td>{{ contenu.imagePanoHead }}</td>
-            </tr>
-            <tr>
-                <th>ImagePanoPresentation</th>
-                <td>{{ contenu.imagePanoPresentation }}</td>
-            </tr>
-            <tr>
-                <th>ImagePanoContact</th>
-                <td>{{ contenu.imagePanoContact }}</td>
-            </tr>
-            <tr>
-                <th>ImagePanoInscription</th>
-                <td>{{ contenu.imagePanoInscription }}</td>
-            </tr>
-            <tr>
-                <th>ImagePanoConnexion</th>
-                <td>{{ contenu.imagePanoConnexion }}</td>
-            </tr>
-            <tr>
-                <th>ImagePanoResultat</th>
-                <td>{{ contenu.imagePanoResultat }}</td>
-            </tr>
-            <tr>
-                <th>PresentationImage</th>
-                <td>{{ contenu.presentationImage }}</td>
-            </tr>
-            <tr>
-                <th>PresentationText</th>
-                <td>{{ contenu.presentationText }}</td>
-            </tr>
-            <tr>
-                <th>Mentions</th>
-                <td>{{ contenu.mentions }}</td>
-            </tr>
-            <tr>
-                <th>Presse</th>
-                <td>{{ contenu.presse }}</td>
-            </tr>
-            <tr>
-                <th>PresseDoc</th>
-                <td>{{ contenu.presseDoc }}</td>
-            </tr>
-        </tbody>
-    </table>
+    {% include 'component/_header.html.twig' %}
 
+    <div class="row">
+        <div class="col-md-12">
+            <!--*****************************************************
+            //////////////////  CONTENU DE LA PAGE  /////////////////
+            ******************************************************-->
+
+            <!--////////////////  BARRE DE RECHERCHE  ////////////////-->
+            <div class="recherche-wrap">
+
+                <h1 class="text-center mb-3">Recherchez un de nos
+                    </span> <span class="text-vanille">talentueux artiste !</span></h1>
+
+                {% include 'component/_search.html.twig' %}
+
+
+            </div> <!-- /.recherche-wrap -->
+
+
+        </div> <!-- /.col -->
+    </div> <!-- /.row -->
+
+    </div> <!-- /.container -->
+    </div> <!-- /.container-fluid -->
+
+
+
+    <div class="container-fluid bg-bleuRoi">
+        <div class="container">
+
+            <!--***************  S'inscrire ou rechercher ***************-->
+            <div class="row">
+                <div class="col">
+                    <section class="inscription-recherche mb-3">
+
+                        <h2 class="text-center mt-3">Rejoignez nos artistes !</h2>
+
+                        <!-- S'inscrire -->
+                        <div class="row mb-3">
+
+                            <div class="col-sm-6 col-md-12 col-lg-12">
+                                <p>{{ contenu.summaryText1 }}</p>
+                            </div>
+
+                            <div class="col-sm-6 col-md-12 col-lg-12 text-center d-flex justify-content-end mt-4">
+                                <button class="btn btn-vanille my-2 my-sm-0" type="button"><a href="{{ contenu.summaryLien1 }}">{{ contenu.summaryBouton1 }}</a></button>
+                            </div>
+
+                        </div>
+
+
+                        <h2 class="text-center">Recherchez nos artistes !</h2>
+
+                        <!-- Recherche -->
+                        <div class="row">
+
+                            <div class="col-sm-6 col-md-12 col-lg-12">
+                                <p>{{ contenu.summaryText2 }}</p>
+                            </div>
+
+                            <div class="col-sm-6 col-md-12 col-lg-12 text-center d-flex justify-content-end mt-4">
+                                <button class="btn btn-vanille my-2 my-sm-0" type="button"><a href="{{ contenu.summaryLien2 }}"></a></button>
+                            </div>
+
+                        </div>
+
+                    </section> <!-- /.inscription-recherche -->
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
+
+
+
+            <div class="row mb-5">
+                <div class="col-sm-4">
+
+                    <p>{{ contenu.presentationText }}</p>
+
+                </div>
+
+                <div class="col-sm-8">
+
+                    <img src="{{ contenu.presentationImage }}" alt="#">
+
+                </div>
+            </div>
+
+
+            <!--***************** Présentation de l'association *********************-->
+            <div class="row">
+                <div class="col">
+
+                    <div class="media mb-3">
+                        <img src="{{ contenu.presentationImage }}" class="img-fluid mr-3" alt="#">
+                        <div class="media-body">
+                            <p>{{ contenu.presentationText }}</p>
+                        </div>
+                    </div>
+
+                </div> <!-- /.col -->
+            </div> <!-- /.row -->
+
+
+        </div> <!-- /.container -->
+    </div> <!-- /.container-fluid -->
+
+    {#{% if is_granted('ROLE_ADMIN') %}#}
     <a href="{{ path('contenu_index') }}">back to list</a>
 
     <a href="{{ path('contenu_edit', {'id': contenu.id}) }}">edit</a>
 
     {{ include('contenu/_delete_form.html.twig') }}
+    {#{% endif %}#}
+
+    {% include 'component/_footer.html.twig' %}
+
 {% endblock %}
-
-
-{#{% endif %}#}
 

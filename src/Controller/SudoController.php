@@ -10,12 +10,26 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/sudo")
+ * @Route("/admin")
  */
 class SudoController extends AbstractController
 {
+
     /**
-     * @Route("/", name="sudo_index", methods={"GET"})
+     * @Route("/", name="admin")
+     */
+    public function admin(Request $request)
+    {
+        $form = $this->createForm(SudoType::class);
+        $form->handleRequest($request);
+       return $this->render('sudo/connexion.html.twig', [
+           'form' => $form->createView(),
+       ]);
+    }
+
+
+    /**
+     * @Route("/liste", name="sudo_index", methods={"GET"})
      */
     public function index(): Response
     {

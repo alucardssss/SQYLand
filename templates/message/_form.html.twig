@@ -32,7 +32,7 @@
                 {{ form_help(form.texte) }}
             </div>
 
-        {#{% if form.vars.value.nouveau == '1' %}#}
+
         <div class="col-md-4">
             {{ form_label(form.fichier) }}
             {{ form_errors(form.fichier) }}
@@ -70,19 +70,17 @@
                 {#{% endif %}#}
             </div>
         </div>
-        {#{% endif %}#}
+
 
 
     </div> <!-- fin du row  -->
 
-    {% if form.sujet starts with 'A' %}
         <div class="col">
             {{ form_label(form.liste) }}
             {{ form_errors(form.liste) }}
             {{ form_widget(form.liste) }}
             {{ form_help(form.liste) }}
         </div>
-    {% endif %}
 
     {# <button class="btn">{{ button_label|default('Save') }}</button> #}
 

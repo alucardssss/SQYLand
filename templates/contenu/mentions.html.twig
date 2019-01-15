@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Contenu{% endblock %}
+
+{% block body %}
+
+    {% include 'component/_header.html.twig' %}
+
+    <div class="container-fluid bg-bleuRoi">
+        <div class="container">
+
+
+            <p>{{ contenu.mentions }}</p>
+
+        </div>
+    </div>
+
+
+    {#{% if is_granted('ROLE_ADMIN') %}#}
+    <a href="{{ path('contenu_index') }}">back to list</a>
+
+    <a href="{{ path('contenu_edit', {'id': contenu.id}) }}">edit</a>
+
+    {#{% endif %}#}
+
+    {% include 'component/_footer.html.twig' %}
+
+{% endblock %}
+

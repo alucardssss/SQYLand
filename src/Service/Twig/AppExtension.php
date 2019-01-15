@@ -14,7 +14,7 @@ use Twig\Extension\AbstractExtension;
 class AppExtension extends AbstractExtension
 {
 
-    public const NB_SUMMARY_CHAR = 70 ;
+    public const NB_SUMMARY_CHAR = 150 ;
 
     public function getFilters()
     {
@@ -24,10 +24,10 @@ class AppExtension extends AbstractExtension
                 # Supprimer les balises HTML
                 $string = strip_tags($text);
 
-                # Si mon string est supérieur à 70, je continue
+                # Si mon string est supérieur à 150, je continue
                 if(strlen($string) > self::NB_SUMMARY_CHAR) {
 
-                    # Je coupe ma chaine à 70
+                    # Je coupe ma chaine à 150
                     $stringCut = substr($string, 0, self::NB_SUMMARY_CHAR);
 
                     # Je ne doit pas couper un mot en plein milieu...

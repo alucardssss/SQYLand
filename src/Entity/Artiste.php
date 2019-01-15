@@ -197,12 +197,19 @@ class Artiste implements UserInterface
         return $this;
     }
 
-    public function getProjet(): ?projet
+    /**
+     * @return mixed
+     */
+    public function getProjet()
     {
         return $this->projet;
     }
 
-    public function setProjet(?projet $projet): self
+    /**
+     * @param $projet
+     * @return Artiste
+     */
+    public function setProjet( $projet)
     {
         $this->projet = $projet;
 

@@ -1,10 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends "layout.html.twig" %}
 
-{% block title %}Artiste{% endblock %}
+{% block page_title %}
+    Artiste {{ artiste.nom }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+{% endblock %}
 
 {% block body %}
-    
-            <!--*****************************************************
+
+    {% include 'component/_header.html.twig' %}
+
+    <!--*****************************************************
             //////////////////  CONTENU DE LA PAGE  /////////////////
             ******************************************************-->
 
@@ -44,9 +54,13 @@
                             <section class="mb-3">
 
                                 <div class="d-flex justify-content-between">
-                                    <img src="{{ projet.image1 }}" alt="" class="img-fluid">
-                                    <img src="{{ projet.image2 }}" alt="" class="img-fluid">
-                                    <img src="{{ projet.image3 }}" alt="" class="img-fluid">
+                                    {#{% for projet in projets %}#}
+                                    {% if artiste.projet is empty %}
+                                        pas de projet actuellement
+                                        {% else %}
+                                            <img src="{{ asset('/images/sqy/404.jpg')  }}" alt="" class="img-fluid">
+                                   {% endif %}
+                                    {#{% endfor %}#}
                                 </div>
 
                             </section>
@@ -54,7 +68,7 @@
                     </div> <!-- /.row -->
 
 
-                    {% include 'projet/show.html.twig' %}
+                   {% include 'projet/show.html.twig' %}
 
 
                 </div> <!-- /.col -->
