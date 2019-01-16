@@ -4,12 +4,11 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="col-md-12">
-            <!--*****************************************************
-            //////////////////  CONTENU DE LA PAGE  /////////////////
-            ******************************************************-->
-
+            <div class="row">
+                <div class="col-md-12">
+                    <!--*****************************************************
+                    //////////////////  CONTENU DE LA PAGE  /////////////////
+                    ******************************************************-->
 
                     <!--////////////////  BARRE DE RECHERCHE  ////////////////-->
                     <div class="recherche-wrap">
@@ -48,7 +47,7 @@
                             </div>
 
                             <div class="col-12 text-center d-flex justify-content-end mt-4">
-                                <button class="btn btn-vanille my-2" type="button"><a href="{{ contenu.summaryLien2 }}" class="text-reset">{{ contenu.summaryBouton2 }}</a></button>
+                                <button class="btn btn-vanille btn-lg my-2" type="button"><a href="{{ path('artiste_inscription') }}" class="text-reset">{{ contenu.summaryBouton2 }}</a></button>
                             </div>
 
                         </div>
@@ -64,7 +63,7 @@
                             </div>
 
                             <div class="col-12 text-center d-flex justify-content-end mt-4">
-                                <button class="btn btn-vanille my-2" type="button"><a href="{{ contenu.summaryLien1 }}" class="text-reset"></a>{{ contenu.summaryBouton1 }}</button>
+                                <button class="btn btn-vanille btn-lg my-2" type="button"><a href="{{ contenu.summaryLien1 }}" class="text-reset"></a>{{ contenu.summaryBouton1 }}</button>
                             </div>
 
                         </div>
@@ -93,13 +92,13 @@
         </div> <!-- /.container -->
     </div> <!-- /.container-fluid -->
 
-    {% if is_granted('ROLE_ADMIN') %}
+    {#{% if is_granted('ROLE_ADMIN') %}#}
     <a href="{{ path('contenu_index') }}">back to list</a>
 
     <a href="{{ path('contenu_edit', {'id': contenu.id}) }}">edit</a>
 
     {{ include('contenu/_delete_form.html.twig') }}
-    {% endif %}
+    {#{% endif %}#}
 
 
 

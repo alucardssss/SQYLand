@@ -3,17 +3,8 @@
 
 {% block title %}Contenu index{% endblock %}
 
-{% block content %}
-
-<div class="container">
-    <h1>Liste des différents contenus</h1>
-
-    {% for message in app.flashes('notice') %}
-        <div class="alert alert-info">
-            {{ message }}
-        </div>
-
-    {% endfor %}
+{% block body %}
+    <h1>Contenu index</h1>
 
     <table class="table">
         <thead>
@@ -73,11 +64,6 @@
         </tbody>
     </table>
 
-    <div class="text-center">
-        <a href="{{ path('contenu_new') }}" class="btn btn-primary" title="Créer un nouveau contenu">Créer un nouveau contenu</a>
-    </div>
-
-</div>
-
+    <a href="{{ path('contenu_new') }}">Create new</a>
 {% endblock %}
 {#{% endif %}#}

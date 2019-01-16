@@ -4,27 +4,25 @@
 
 {% block content %}
 
-    {% include 'component/_header.html.twig' %}
-
-    <div class="container-fluid bg-bleuRoi">
-        <div class="container">
-
-
+        <div class="container p-5 bg-bleuRoi">      
+            
             <p>{{ contenu.presse }}</p>
             <p><a href="{{ asset ('/images/'~contenu.presseDoc) }}">téléchargez la version pdf</a></p>
 
         </div>
-    </div>
 
 
-    {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('contenu_index') }}">back to list</a>
+        {#{% if is_granted('ROLE_ADMIN') %}#}
+        <a href="{{ path('contenu_index') }}" class="btn btn-vanille">Retour</a>
 
-    <a href="{{ path('contenu_edit', {'id': contenu.id}) }}">edit</a>
-    
-    {% endif %}
+        <a href="{{ path('contenu_edit', {'id': contenu.id}) }}">edit</a>
+        
+        {#{% endif %}#}
 
-    {% include 'component/_footer.html.twig' %}
+
+    </div> <!-- /.container -->
+</div> <!-- /.container-fluid -->
+ 
 
 {% endblock %}
 
