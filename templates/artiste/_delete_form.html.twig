@@ -1,5 +1,7 @@
-<form method="post" action="{{ path('artiste_delete', {'id': artiste.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ artiste.id) }}">
-    <button class="btn">Delete</button>
-</form>
+{% if is_granted('ROLE_ADMIN') %}
+    <form method="post" action="{{ path('artiste_delete', {'id': artiste.id}) }}" onsubmit="return confirm('Voulez vous vraiment supprimer cet artiste ?');">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ artiste.id) }}">
+        <button class="btn btn-danger supericon" title="Supprimer cet artiste">&#128501;</button>
+    </form>
+{% endif %}

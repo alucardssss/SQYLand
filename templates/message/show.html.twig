@@ -1,7 +1,6 @@
-
 {% extends 'layout.html.twig' %}
 
-{#{% if is_granted('ROLE_ADMIN') %}#}
+{% if is_granted('ROLE_ADMIN') %}
 
 {% block title %}Message{% endblock %}
 
@@ -10,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha256-AWdeVMUYtwLH09F6ZHxNgvJI37p+te8hJuSMo44NVm0=" crossorigin="anonymous" />
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 {% endblock %}
-
 
 {% block content %}
 
@@ -104,22 +102,4 @@
     </div>
 {% endblock %}
 
-
-{% block final_javascripts %}
-    <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha256-SUaao5Q7ifr2twwET0iyXVy0OVnuFJhGVi5E/dqEiLU=" crossorigin="anonymous"></script>
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-    <script>
-        CKEDITOR.replace( 'form[texte]' );
-        $('.dropify').dropify({
-            messages: {
-                default: 'Glissez-d&eacute;posez un fichier ici ou cliquez',
-                replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
-                remove:  'Supprimer',
-                error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
-            }
-        });
-    </script>
-{%  endblock %}
-
-{#{% endif %}#}
+{% endif %}
