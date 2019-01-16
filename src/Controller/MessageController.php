@@ -86,17 +86,38 @@ class MessageController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
 
-            // envoi du mail
-            $message = (new \Swift_Message($message->getSujet()))
+            // envoi du mail de confirmation utilisateur
+            $message1 = (new \Swift_Message($message->getSujet()))
+                ->setFrom('contact@sqyland.org')
+                ->setTo($message->getExpediteur())
+                ->setBody(
+                   # $message->getTexte().'<br>'.$message->getListe(),
+                   # 'text/html'
+                    $this->renderView(
+                    // templates/emails/registration.html.twig
+                        'emails/confirmation.html.twig',
+                        ['contenu' => $message->getTexte()]
+                    ),
+                    'text/html'
+                )
+            ;
+            $mailer->send($message1);
+
+            // envoi du mail d'avertissement admin
+            $message2 = (new \Swift_Message($message->getSujet()))
                 ->setFrom($message->getExpediteur())
                 ->setTo('contact@sqyland.org')
                 ->setBody(
-                    $message->getTexte().'<br>'.$message->getListe(),
+                    $this->renderView(
+                    // templates/emails/registration.html.twig
+                        'emails/message.html.twig',
+                        ['contenu' => $message->getTexte().'<br>'.$message->getListe()]
+                    ),
                     'text/html'
                 )
             ;
 
-            $mailer->send($message);
+            $mailer->send($message2);
 
             # notification
             $this->addFlash('notice', 'Merci votre message est transmis à SQYLand !');

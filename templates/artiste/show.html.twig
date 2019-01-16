@@ -69,7 +69,7 @@
                             {% if artiste.projet is empty %}
                                 pas de projet actuellement
                                 {% else %}
-                                    <img src="{{ asset('/images/sqy/404.jpg')  }}" alt="" class="img-fluid">
+                                   {% include ('projet/show.html.twig') %}
                            {% endif %}
                             {#{% endfor %}#}
                         </div>

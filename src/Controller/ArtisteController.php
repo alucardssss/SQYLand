@@ -30,7 +30,7 @@ class ArtisteController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function inscription(Request $request,
+    public function inscription(Request $request, \Swift_Mailer $mailer,
                                 UserPasswordEncoderInterface $encoder)
 
     {
@@ -58,7 +58,7 @@ class ArtisteController extends AbstractController
                  * Le fichier envoyé est renommer avec un nom unique
                  *
                  * @var UploadedFile $file
-                 * @var File  $file
+                 * @var File $file
                  */
                 $file = $Artiste->getImage();
 
@@ -87,6 +87,34 @@ class ArtisteController extends AbstractController
             $saves = $this->getDoctrine()->getManager();
             $saves->persist($Artiste);
             $saves->flush();
+
+            // envoi du mail de confirmation à l'utilisateur
+            $Artiste1 = (new \Swift_Message('Confirmation de votre inscription chez SQYLand.org'))
+                ->setFrom('contact@sqyland.org')
+                ->setTo($Artiste->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'emails/registration.html.twig'),
+                    'text/html'
+                )
+            ;
+
+            $mailer->send($Artiste1);
+
+            // envoi du mail d'avertissement admin
+            $Artiste2 = (new \Swift_Message('Inscription nouvel artiste'))
+                ->setFrom($Artiste->getEmail())
+                ->setTo('contact@sqyland.org')
+                ->setBody(
+                    $this->renderView(
+                        'emails/message.html.twig',
+                        ['contenu' => $Artiste->getTexte().'<br>'.$Artiste->getListe()]
+                    ),
+                    'text/html'
+                )
+            ;
+
+            $mailer->send($Artiste2);
 
             #Notification
             $this->addFlash('notice',
@@ -276,11 +304,6 @@ class ArtisteController extends AbstractController
         $guesser = ExtensionGuesser::getInstance();
 
         return $guesser->guess($type);
-    }
-
-    private function getMimeType()
-    {
-
     }
 
 

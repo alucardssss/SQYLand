@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -168,16 +170,22 @@ class Projet
      */
     private $iframeVideo3;
 
+
     /**
-     *
-     * @ORM\ManyToOne(targetEntity="Categorie",
-     *     cascade={"persist"},
-     *     inversedBy="artistes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", inversedBy="projets")
      */
     private $categorie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Artiste", inversedBy="projets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $artiste;
+
+    public function __construct()
+    {
+        $this->categorie = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -436,21 +444,42 @@ class Projet
         return $this;
     }
 
+
     /**
-     * @return mixed
+     * @return Collection|Categorie[]
      */
-    public function getCategorie()
+    public function getCategorie(): Collection
     {
         return $this->categorie;
     }
 
-    /**
-     * @param $categorie
-     * @return Artiste
-     */
-    public function setCategorie($categorie)
+    public function addCategorie(Categorie $categorie): self
     {
-        $this->categorie = $categorie;
+        if (!$this->categorie->contains($categorie)) {
+            $this->categorie[] = $categorie;
+        }
+
+        return $this;
+    }
+
+    public function removeCategorie(Categorie $categorie): self
+    {
+        if ($this->categorie->contains($categorie)) {
+            $this->categorie->removeElement($categorie);
+        }
+
+        return $this;
+    }
+
+    public function getArtiste(): ?Artiste
+    {
+        return $this->artiste;
+    }
+
+    public function setArtiste(?Artiste $artiste): self
+    {
+        $this->artiste = $artiste;
+
         return $this;
     }
 

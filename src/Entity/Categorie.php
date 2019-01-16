@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +44,18 @@ class Categorie
      */
     private $nom;
 
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Projet", mappedBy="categorie")
+     */
+    private $projets;
+
+    public function __construct()
+    {
+        $this->projets = new ArrayCollection();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,6 +93,34 @@ class Categorie
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Projet[]
+     */
+    public function getProjets(): Collection
+    {
+        return $this->projetss;
+    }
+
+    public function addProjets(Projet $projets): self
+    {
+        if (!$this->projets->contains($projets)) {
+            $this->projets[] = $projets;
+            $projets->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjets(Projet $projets): self
+    {
+        if ($this->projets->contains($projets)) {
+            $this->projets->removeElement($projets);
+            $projets->removeCategory($this);
+        }
 
         return $this;
     }
