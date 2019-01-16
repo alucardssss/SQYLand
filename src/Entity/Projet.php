@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Projet
  *
- * @ORM\Table(name="projet", indexes={@ORM\Index(name="categorie_id", columns={"categorie_id"})})
+ * @ORM\Table(name="projet")
  * @ORM\Entity
  */
 class Projet
@@ -170,21 +170,14 @@ class Projet
      */
     private $iframeVideo3;
 
-
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", inversedBy="projets")
-     */
-    private $categorie;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Artiste", inversedBy="projets")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Artiste", inversedBy="projet")
      */
     private $artiste;
 
+
     public function __construct()
     {
-        $this->categorie = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -440,33 +433,6 @@ class Projet
     public function setIframeVideo3(?string $iframeVideo3): self
     {
         $this->iframeVideo3 = $iframeVideo3;
-
-        return $this;
-    }
-
-
-    /**
-     * @return Collection|Categorie[]
-     */
-    public function getCategorie(): Collection
-    {
-        return $this->categorie;
-    }
-
-    public function addCategorie(Categorie $categorie): self
-    {
-        if (!$this->categorie->contains($categorie)) {
-            $this->categorie[] = $categorie;
-        }
-
-        return $this;
-    }
-
-    public function removeCategorie(Categorie $categorie): self
-    {
-        if ($this->categorie->contains($categorie)) {
-            $this->categorie->removeElement($categorie);
-        }
 
         return $this;
     }

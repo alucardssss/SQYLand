@@ -1,6 +1,155 @@
 {#{% if is_granted('ROLE_ADMIN') %}#}
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {# <button class="btn">{{ button_label|default('Save') }}</button> #}
+
+{% extends 'message/index.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_label(form.summaryText1) }}
+            {{ form_errors(form.summaryText1) }}
+            {{ form_widget(form.summaryText1) }}
+            {{ form_help(form.summaryText1) }}
+        </div>
+
+        <div class="col-md-6">
+            {{ form_label(form.summaryLien1) }}
+            {{ form_errors(form.summaryLien1) }}
+            {{ form_widget(form.summaryLien1) }}
+            {{ form_help(form.summaryLien1) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            {{ form_label(form.summaryBouton1) }}
+            {{ form_errors(form.summaryBouton1) }}
+            {{ form_widget(form.summaryBouton1) }}
+            {{ form_help(form.summaryBouton1) }}
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_label(form.summaryText2) }}
+            {{ form_errors(form.summaryText2) }}
+            {{ form_widget(form.summaryText2) }}
+            {{ form_help(form.summaryText2) }}
+        </div>
+
+        <div class="col-md-6">
+            {{ form_label(form.summaryLien2) }}
+            {{ form_errors(form.summaryLien2) }}
+            {{ form_widget(form.summaryLien2) }}
+            {{ form_help(form.summaryLien2) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            {{ form_label(form.summaryBouton2) }}
+            {{ form_errors(form.summaryBouton2) }}
+            {{ form_widget(form.summaryBouton2) }}
+            {{ form_help(form.summaryBouton2) }}
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 text-center">
+            {{ form_label(form.imagePanoHead) }}
+            {{ form_errors(form.imagePanoHead) }}
+            {{ form_widget(form.imagePanoHead) }}
+            {{ form_help(form.imagePanoHead) }}
+        </div>
+        <div class="col-md-3 text-center">
+            {{ form_label(form.imagePanoPresentation) }}
+            {{ form_errors(form.imagePanoPresentation) }}
+            {{ form_widget(form.imagePanoPresentation) }}
+            {{ form_help(form.imagePanoPresentation) }}
+        </div>
+        <div class="col-md-3 text-center">
+            {{ form_label(form.imagePanoContact) }}
+            {{ form_errors(form.imagePanoContact) }}
+            {{ form_widget(form.imagePanoContact) }}
+            {{ form_help(form.imagePanoContact) }}
+        </div>
+        <div class="col-md-3 text-center">
+            {{ form_label(form.imagePanoInscription) }}
+            {{ form_errors(form.imagePanoInscription) }}
+            {{ form_widget(form.imagePanoInscription) }}
+            {{ form_help(form.imagePanoInscription) }}
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 text-center">
+            {{ form_label(form.imagePanoConnexion) }}
+            {{ form_errors(form.imagePanoConnexion) }}
+            {{ form_widget(form.imagePanoConnexion) }}
+            {{ form_help(form.imagePanoConnexion) }}
+        </div>
+        <div class="col-md-3 text-center">
+            {{ form_label(form.imagePanoResultat) }}
+            {{ form_errors(form.imagePanoResultat) }}
+            {{ form_widget(form.imagePanoResultat) }}
+            {{ form_help(form.imagePanoResultat) }}
+        </div>
+        <div class="col-md-3 text-center">
+            {{ form_label(form.presentationImage) }}
+            {{ form_errors(form.presentationImage) }}
+            {{ form_widget(form.presentationImage) }}
+            {{ form_help(form.presentationImage) }}
+        </div>
+
+    </div>
+
+
+
+    <div class="row">
+
+        <div class="col text-center">
+            {{ form_label(form.presentationText) }}
+            {{ form_errors(form.presentationText) }}
+            {{ form_widget(form.presentationText) }}
+            {{ form_help(form.presentationText) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            {{ form_label(form.mentions) }}
+            {{ form_errors(form.mentions) }}
+            {{ form_widget(form.mentions) }}
+            {{ form_help(form.mentions) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 text-center">
+            {{ form_label(form.presse) }}
+            {{ form_errors(form.presse) }}
+            {{ form_widget(form.presse) }}
+            {{ form_help(form.presse) }}
+        </div>
+        <div class="col-md-4 text-center">
+            {{ form_label(form.presseDoc) }}
+            {{ form_errors(form.presseDoc) }}
+            {{ form_widget(form.presseDoc) }}
+            {{ form_help(form.presseDoc) }}
+            <p>
+                {{ form_label(form.submit) }}
+                {{ form_widget(form.submit) }}
+            </p>
+        </div>
+    </div>
+
+
+    {# <button class="btn">{{ button_label|default('Save') }}</button> #}
+
     {{ form_end(form) }}
+
+{% endblock %}
 {#{% endif %}#}

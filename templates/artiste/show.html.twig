@@ -66,11 +66,9 @@
 
                         <div class="d-flex justify-content-between">
                             {#{% for projet in projets %}#}
-                            {% if artiste.projet is empty %}
-                                pas de projet actuellement
-                                {% else %}
+
                                    {% include ('projet/show.html.twig') %}
-                           {% endif %}
+                  
                             {#{% endfor %}#}
                         </div>
 

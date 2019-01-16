@@ -101,7 +101,7 @@ class ContenuType extends AbstractType
                 ]
             ])
             ->add('presentationImage', FileType::class, [
-                'required' => true,
+                'required' => false,
                 'label' => 'Ajoutez l\'image de l\'accueil',
                 'attr' => [
                     'class' => 'dropify',

@@ -26,14 +26,6 @@ class ProjetType extends AbstractType
                     'placeholder' => "Nom du projet"
                 ]
             ] )
-            ->add('categorie', EntityType::class, [
-                'class' => Categorie::class,
-                'choice_label' => 'nom',
-                'required' => true,
-                'expanded' => false,
-                'multiple' => false,
-                'label' => "Catégorie de votre projet"
-            ])
             ->add('resume', TextareaType::class, [
                 'required' => true,
                 'label' => 'Résumé du projet',

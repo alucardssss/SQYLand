@@ -1,4 +1,175 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
+{% extends 'message/index.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_label(form.nom) }}
+            {{ form_errors(form.nom) }}
+            {{ form_widget(form.nom) }}
+            {{ form_help(form.nom) }}
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-8">
+            {{ form_label(form.resume) }}
+            {{ form_errors(form.resume) }}
+            {{ form_widget(form.resume) }}
+            {{ form_help(form.resume) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_label(form.imageProfil) }}
+            {{ form_errors(form.imageProfil) }}
+            {{ form_widget(form.imageProfil) }}
+            {{ form_help(form.imageProfil) }}
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4 text-center">
+            {{ form_label(form.imageLogo1) }}
+            {{ form_errors(form.imageLogo1) }}
+            {{ form_widget(form.imageLogo1) }}
+            {{ form_help(form.imageLogo1) }}
+        </div>
+        <div class="col-md-4 text-center">
+            {{ form_label(form.imageLogo2) }}
+            {{ form_errors(form.imageLogo2) }}
+            {{ form_widget(form.imageLogo2) }}
+            {{ form_help(form.imageLogo2) }}
+        </div>
+        <div class="col-md-4 text-center">
+            {{ form_label(form.imageLogo3) }}
+            {{ form_errors(form.imageLogo3) }}
+            {{ form_widget(form.imageLogo3) }}
+            {{ form_help(form.imageLogo3) }}
+        </div>
+
+    </div>
+
+       <div class="row">
+
+        <div class="col-md-4 text-center">
+            {{ form_label(form.image1) }}
+            {{ form_errors(form.image1) }}
+            {{ form_widget(form.image1) }}
+            {{ form_help(form.image1) }}
+        </div>
+        <div class="col-md-4 text-center">
+            {{ form_label(form.image2) }}
+            {{ form_errors(form.image2) }}
+            {{ form_widget(form.image2) }}
+            {{ form_help(form.image2) }}
+        </div>
+        <div class="col-md-4 text-center">
+            {{ form_label(form.image3) }}
+            {{ form_errors(form.image3) }}
+            {{ form_widget(form.image3) }}
+            {{ form_help(form.image3) }}
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4 text-center">
+            {{ form_label(form.iframeSon1) }}
+            {{ form_errors(form.iframeSon1) }}
+            {{ form_widget(form.iframeSon1) }}
+            {{ form_help(form.iframeSon1) }}
+        </div>
+         <div class="col-md-4 text-center">
+            {{ form_label(form.iframeSon2) }}
+            {{ form_errors(form.iframeSon2) }}
+            {{ form_widget(form.iframeSon2) }}
+            {{ form_help(form.iframeSon2) }}
+        </div>
+         <div class="col-md-4 text-center">
+            {{ form_label(form.iframeSon3) }}
+            {{ form_errors(form.iframeSon3) }}
+            {{ form_widget(form.iframeSon3) }}
+            {{ form_help(form.iframeSon3) }}
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-4 text-center">
+            {{ form_label(form.iframeVideo1) }}
+            {{ form_errors(form.iframeVideo1) }}
+            {{ form_widget(form.iframeVideo1) }}
+            {{ form_help(form.iframeVideo1) }}
+        </div>
+         <div class="col-md-4 text-center">
+            {{ form_label(form.iframeVideo2) }}
+            {{ form_errors(form.iframeVideo2) }}
+            {{ form_widget(form.iframeVideo2) }}
+            {{ form_help(form.iframeVideo2) }}
+        </div>
+         <div class="col-md-4 text-center">
+            {{ form_label(form.iframeVideo3) }}
+            {{ form_errors(form.iframeVideo3) }}
+            {{ form_widget(form.iframeVideo3) }}
+            {{ form_help(form.iframeVideo3) }}
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4 text-center">
+            {{ form_label(form.lienFacebook) }}
+            {{ form_errors(form.lienFacebook) }}
+            {{ form_widget(form.lienFacebook) }}
+            {{ form_help(form.lienFacebook) }}
+        </div>
+        <div class="col-md-4 text-center">
+            {{ form_label(form.lienTwitter) }}
+            {{ form_errors(form.lienTwitter) }}
+            {{ form_widget(form.lienTwitter) }}
+            {{ form_help(form.lienTwitter) }}
+        </div>
+        <div class="col-md-4 text-center">
+            {{ form_label(form.lienYoutube) }}
+            {{ form_errors(form.lienYoutube) }}
+            {{ form_widget(form.lienYoutube) }}
+            {{ form_help(form.lienYoutube) }}
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-4 text-center">
+            {{ form_label(form.lienSoundcloud) }}
+            {{ form_errors(form.lienSoundcloud) }}
+            {{ form_widget(form.lienSoundcloud) }}
+            {{ form_help(form.lienSoundcloud) }}
+        </div>
+        <div class="col-md-4 text-center">
+            {{ form_label(form.lienLinkedin) }}
+            {{ form_errors(form.lienLinkedin) }}
+            {{ form_widget(form.lienLinkedin) }}
+            {{ form_help(form.lienLinkedin) }}
+        </div>
+        <div class="col-md-4 text-center">
+            {{ form_label(form.lienPerso) }}
+            {{ form_errors(form.lienPerso) }}
+            {{ form_widget(form.lienPerso) }}
+            {{ form_help(form.lienPerso) }}
+        </div>
+
+    </div>
+
     {# <button class="btn">{{ button_label|default('Save') }}</button> #}
-{{ form_end(form) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}

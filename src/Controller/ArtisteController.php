@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Artiste;
-use App\Entity\Categorie;
 use App\Entity\Projet;
 use App\Form\ArtisteType;
 use App\Form\InscriptionFormType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
@@ -26,7 +26,6 @@ class ArtisteController extends AbstractController
     /**
      * Inscriptions d'un artiste
      * @Route("/inscription", name="artiste_inscription", methods={"GET","POST"})
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
@@ -140,11 +139,10 @@ class ArtisteController extends AbstractController
    /**
     * @Route("/{id}", name="artiste_show", methods={"GET"})
     */
-   public function show(Artiste $Artiste, Categorie $categorie, Projet $projet): Response
+   public function show(Artiste $Artiste, Projet $projet): Response
    {
       return $this->render('artiste/show.html.twig', [
            'artiste' => $Artiste,
-          'categorie' => $categorie,
           'projet' => $projet
        ]);
    }

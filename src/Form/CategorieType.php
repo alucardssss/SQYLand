@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Categorie;
+use App\Entity\Projet;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -32,6 +34,13 @@ class CategorieType extends AbstractType
                     'placeholder' => 'exemple Arts de rue'
                 ]
             ])
+           # ->add('projets', EntityType::class, [
+           #     'class' => Projet::class,
+           #     'label' => 'Saisissez le Nom de la catégorie',
+           #     'attr' => [
+           #         'placeholder' => 'exemple Arts de rue'
+           #     ]
+           # ])
             ->add('submit', SubmitType::class, [
                 'label' => "Envoyer !"
             ])

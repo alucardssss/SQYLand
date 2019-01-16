@@ -11,8 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Artiste
  *
- * @ORM\Table(name="Artiste", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"})},
- *     indexes={@ORM\Index(name="projet_id", columns={"projet_id"})})
+ * @ORM\Table(name="Artiste", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"})})
  * @ORM\Entity
  */
 class Artiste implements UserInterface
@@ -89,11 +88,10 @@ class Artiste implements UserInterface
      */
     private $dateConnexion;
 
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Projet", mappedBy="artiste")
      */
-    private $projets;
+    private $projet;
 
     public function getId(): ?int
     {
@@ -200,7 +198,7 @@ class Artiste implements UserInterface
     public function __construct()
     {
         $this->dateInscription = new \DateTime();
-        $this->projets = new ArrayCollection();
+        $this->projet = new ArrayCollection();
     }
 
     /**
@@ -271,31 +269,32 @@ class Artiste implements UserInterface
     /**
      * @return Collection|Projet[]
      */
-    public function getProjets(): Collection
+    public function getProjet(): Collection
     {
-        return $this->projets;
+        return $this->projet;
     }
 
-    public function addProjets(Projet $projets): self
+    public function addProjet(Projet $projet): self
     {
-        if (!$this->projets->contains($projets)) {
-            $this->projets[] = $projets;
-            $projets->setArtiste($this);
+        if (!$this->projet->contains($projet)) {
+            $this->projet[] = $projet;
+            $projet->setArtiste($this);
         }
 
         return $this;
     }
 
-    public function removeProjets(Projet $projets): self
+    public function removeProjet(Projet $projet): self
     {
-        if ($this->projets->contains($projets)) {
-            $this->projets->removeElement($projets);
+        if ($this->projet->contains($projet)) {
+            $this->projet->removeElement($projet);
             // set the owning side to null (unless already changed)
-            if ($projets->getArtiste() === $this) {
-                $projets->setArtiste(null);
+            if ($projet->getArtiste() === $this) {
+                $projet->setArtiste(null);
             }
         }
 
         return $this;
     }
+
 }
