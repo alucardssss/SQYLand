@@ -27,8 +27,8 @@ class ArtisteController extends AbstractController
      * Inscriptions d'un artiste
      * @Route("/inscription", name="artiste_inscription", methods={"GET","POST"})
      * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
      * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Exception
      */
     public function inscription(Request $request, \Swift_Mailer $mailer,
                                 UserPasswordEncoderInterface $encoder)
@@ -36,6 +36,8 @@ class ArtisteController extends AbstractController
     {
         //creation dun artiste
         $Artiste = new artiste();
+        $Artiste->setRoles(['ROLE_ARTISTE']);
+
 
         //creation du formulaire artiste-ormType
         $form = $this->createForm(ArtisteType::class, $Artiste);
@@ -122,7 +124,7 @@ class ArtisteController extends AbstractController
 
             # Redirection
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('security_connexion');
         }
 
 
@@ -136,11 +138,14 @@ class ArtisteController extends AbstractController
 
     }
 
-
-   /**
-    * @Route("/{id}", name="artiste_show", methods={"GET"})
-    */
-   public function show(Artiste $Artiste, Categorie $categorie, Projet $projet): Response
+    /**
+     * @Route("/{id}", name="artiste_show", methods={"GET"})
+     * @param Artiste $artiste
+     * @param Categorie $categorie
+     * @param Projet $projet
+     * @return Response
+     */
+   public function show(Artiste $artiste, Categorie $categorie, Projet $projet): Response
    {
       return $this->render('artiste/show.html.twig', [
            'artiste' => $Artiste,

@@ -2,25 +2,42 @@
 
 namespace App\Controller;
 
+
+use App\Form\LoginType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    /**
-     * @Route("/login", name="app_login")
-     * @param AuthenticationUtils $authenticationUtils
-     * @return Response
-     */
-    public function login(AuthenticationUtils $authenticationUtils): Response
-    {
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+    /**
+     * connexion dun membre
+     * @Route("/login", name="security_connexion")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function connexion(AuthenticationUtils $authenticationUtils)
+    {
+        $form = $this->createForm(LoginType::class,[
+            'email' => $authenticationUtils->getLastUsername()
+        ]);
+
+        $error =  $authenticationUtils->getLastAuthenticationError();
+
+        return $this->render('security/login.html.twig',[
+            'form' => $form->createView(),
+            'error' => $error
+        ]);
+    }
+
+
+    /**
+     * deconnexion dun membre
+     * @Route("/deconnexion.html", name="security_deconnexion")
+     */
+    public function deconnexion()
+    {
+
     }
 }

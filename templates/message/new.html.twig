@@ -11,22 +11,23 @@
 {% block content %}
 
     <div class="container">
-        <h1>Créer un nouveau message</h1>
-
-            <div class="text-left">
-                <a href="{{ path('contenu_show') }}" class="btn btn-primary" title="Retour à l'accueil">Retour à l'accueil</a>
+            
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-info">
+                {{ message }}
             </div>
+        {% endfor %}
 
-            {% for message in app.flashes('notice') %}
-                <div class="alert alert-info">
-                    {{ message }}
-                </div>
+        <h1>Contact</h1>
 
-            {% endfor %}
+        <div class="text-left">
+            <a href="{{ path('contenu_show') }}" class="btn btn-primary" title="Retour à l'accueil">Retour à l'accueil</a>
+        </div>
 
-            {{ include('message/_form.html.twig') }}
+        {{ include('message/_form.html.twig') }}
 
     </div>
+    
 
 {% endblock %}
 

@@ -35,6 +35,11 @@ class Sudo
      */
     private $mdp;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $roles = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -64,5 +69,17 @@ class Sudo
         return $this;
     }
 
+
+    public function getRoles(): ?array
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
 
 }

@@ -1,3 +1,30 @@
+/*------------------------------------------------------------------
+
+    [Main Style Stylesheet]
+    Project:       SQY Land
+    Version:        1
+    Author:         Stéphane, Aléxis, Christopher
+    Last change:    10/01/2019
+
+
+-------------------------------------------------------------------
+
+    [Table of contents]
+    01. Base
+
+    02. Components 
+    03. Header
+    04. Menu
+    05. Page Accueil
+
+    06. Page Resultats
+    07. Page Inscription
+    
+    08. Page Contact 
+    09. Footer 
+    10. Page 404
+-------------------------------------------------------------------*/
+
 /********** BASE ***********/
 
 body {
@@ -13,7 +40,7 @@ body {
 
 /* Couleur des boutons */
 .btn-vanille {
-    background-color: rgb(225, 206, 154);
+    background-color: rgb(225, 206, 154) !important;
 }
 
 
@@ -37,7 +64,7 @@ body {
 /* Background */
 @media (min-width: 768px) {
     .bg-accueil {
-        background-image: url(Asset/img/SQYBlueArch.jpg);
+        background-image: url(../images/SQYBlueArch.jpg);
         background-size: cover;
         min-height: 400px;
     }
@@ -55,6 +82,32 @@ body {
 }
 
 
+/******* PAGE INSCRIPTION *********/
+
+#artiste {
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Bouton inscription */
+#artiste_submit {
+    /* btn-block */
+    display: block;
+    width: 100%;
+
+    /* btn-vanille */
+    background-color: rgb(225, 206, 154);
+    border-color: rgb(225, 206, 154);
+
+    /* btn-lg */
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+}
+
+
+
 /******* PAGE CONTACT *******/
 
 /* icones favoris sur les photos */
@@ -65,7 +118,7 @@ body {
 
 @media (min-width: 768px) {
     .bg-contact {
-        background-image: url(Asset/img/singeGuitare.jpg);
+        background-image: url(../images/singeGuitare.jpg);
         background-size: cover;
         min-height: 400px;
     }
