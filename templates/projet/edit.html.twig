@@ -1,7 +1,6 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Edit Projet{% endblock %}
-
+{% extends 'layout.html.twig' %}
+{% if is_granted('ROLE_ARTISTE') %}
+{% block title %}Modifier le projet {{ projet.nom }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -9,15 +8,20 @@
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 {% endblock %}
 
+{% block content %}
 
-{% block body %}
-    <h1>Edit Projet</h1>
+    <div class="container">
+        <h1>Modifier ce projet</h1>
 
-    {{ include('projet/_form.html.twig', {'button_label': 'Update'}) }}
+        <div class="text-left col">
+            <a href="{{ path('artiste_index') }}" class="btn btn-primary" title="Retour à la liste des artistes">Retour à la liste</a>
+            {{ include('projet/_delete_form.html.twig') }}
+        </div>
 
-    <a href="{{ path('projet_index') }}">back to list</a>
+        {{ include('projet/_form.html.twig', {'button_label': 'Mettre à jour '}) }}
 
-    {{ include('projet/_delete_form.html.twig') }}
+    </div>
+
 {% endblock %}
 
 {% block final_javascripts %}
@@ -25,7 +29,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha256-SUaao5Q7ifr2twwET0iyXVy0OVnuFJhGVi5E/dqEiLU=" crossorigin="anonymous"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
-        CKEDITOR.replace( 'form[contenu]' );
+        CKEDITOR.replace( 'form[resume]' );
         $('.dropify').dropify({
             messages: {
                 default: 'Glissez-d&eacute;posez un fichier ici ou cliquez',
@@ -36,3 +40,4 @@
         });
     </script>
 {%  endblock %}
+{% endif %}

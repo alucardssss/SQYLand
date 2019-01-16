@@ -1,6 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Projet{% endblock %}
+{% block title %}Détail du projet {{ projet.nom }}{% endblock %}
+
 
 {% block body %}
 
@@ -10,6 +11,14 @@
             <section class="border border-light bg-bleuRoi p-2 mb-3">
 
                 <h2>{{ projet.nom }}</h2>
+
+                <div class="col text-right">
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('projet_index') }}" class="btn btn-primary" title="Retour à la liste">Retour à la liste</a>
+                    <a href="{{ path('projet_edit', {'id': projet.id}) }}" class="btn btn-warning" title="Modifier ce message">Modifier &#128393;</a>
+                    {{ include('projet/_delete_form.html.twig') }}
+                    {#{% endif %}#}
+                </div>
 
                 <div class="row">
 
@@ -60,13 +69,6 @@
         </div> <!-- /.col -->
     </div> <!-- /.row -->
 
-
-
-
-
-    <a href="{{ path('projet_index') }}">back to list</a>
-
-    <a href="{{ path('projet_edit', {'id': projet.id}) }}">edit</a>
-
-    {{ include('projet/_delete_form.html.twig') }}
 {% endblock %}
+
+{% endif %}
