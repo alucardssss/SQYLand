@@ -22,6 +22,9 @@ class LoginType extends AbstractType
             ->add('mdp', PasswordType::class,[
                 'label' => false,
                 'attr'  => ['placeholder' => 'Mot de Passe']
+            ])
+            ->add('submit', SubmitType::class,[
+                'label' => 'Connexion'
             ]);
     }
 

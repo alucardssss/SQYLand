@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+
+    <div class="connexion_user_wrap d-md-flex  justify-content-center">
+        <div>
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <h1 class="text-center my-5">Connexion</h1>
+
+        {{ form(form) }}
+
+        </div>
+    </div>
+
+    </div> <!-- /.container -->
+    </div> <!-- /.container-fluid -->
+{% endblock %}
