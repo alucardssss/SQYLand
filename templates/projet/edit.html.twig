@@ -1,5 +1,5 @@
 {% extends 'layout.html.twig' %}
-
+{% if is_granted('ROLE_ARTISTE') %}
 {% block title %}Modifier le projet {{ projet.nom }}{% endblock %}
 
 {% block stylesheets %}
@@ -40,3 +40,4 @@
         });
     </script>
 {%  endblock %}
+{% endif %}

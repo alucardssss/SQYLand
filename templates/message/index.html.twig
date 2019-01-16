@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{#{% if is_granted('ROLE_ADMIN') %}#}
+{% if is_granted('ROLE_ADMIN') %}
 
 {% block title %}Liste des messages{% endblock %}
 
@@ -77,5 +77,5 @@
 {% endblock %}
 
 
-{#{% endif %}#}
+{% endif %}
 

@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{#{% if is_granted('ROLE_ADMIN') %}#}
+{% if is_granted('ROLE_ADMIN') %}
 
 {% block title %}Modifier la catégorie {{ categorie.nom }}{% endblock %}
 
@@ -42,4 +42,4 @@
         });
     </script>
 {%  endblock %}
-{#{% endif %}#}
+{% endif %}

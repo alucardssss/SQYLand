@@ -13,7 +13,7 @@
                 <h2>{{ projet.nom }}</h2>
 
                 <div class="col text-right">
-                    {#{% if is_granted('ROLE_ADMIN') %}#}
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('projet_index') }}" class="btn btn-primary" title="Retour à la liste">Retour à la liste</a>
                     <a href="{{ path('projet_edit', {'id': projet.id}) }}" class="btn btn-warning" title="Modifier ce message">Modifier &#128393;</a>
                     {{ include('projet/_delete_form.html.twig') }}
@@ -71,4 +71,4 @@
 
 {% endblock %}
 
-{#{% endif %}#}
+{% endif %}

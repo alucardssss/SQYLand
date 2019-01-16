@@ -204,6 +204,7 @@ class Artiste implements UserInterface
         return $this;
     }
 
+   
 
     public function getRoles(): ?array
     {

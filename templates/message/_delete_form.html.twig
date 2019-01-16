@@ -1,4 +1,4 @@
-{#{% if is_granted('ROLE_ADMIN') %}#}
+{% if is_granted('ROLE_ADMIN') %}
     <form method="post" action="{{ path('message_delete', {'id': message.id}) }}" onsubmit="return confirm('Voulez vous vraiment supprimer ce message ?');">
         <input type="hidden" name="_method" value="DELETE">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
