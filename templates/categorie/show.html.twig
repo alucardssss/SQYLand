@@ -1,62 +1,38 @@
 {% extends 'layout.html.twig' %}
 
-{% if is_granted('ROLE_ADMIN') %}
+{#{% if is_granted('ROLE_ADMIN') %}#}
 
-{% block title %}Détail de la catégorie n° {{ categorie.id }}{% endblock %}
+{% block title %}Categorie{% endblock %}
 
-{% block content %}
+{% block body %}
+    <h1>Categorie</h1>
 
-<div class="container">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ categorie.code }}</td>
+            </tr>
+            <tr>
+                <th>Famille</th>
+                <td>{{ categorie.famille }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ categorie.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-    {% for message in app.flashes('notice') %}
-        <div class="alert alert-info">
-            {{ message }}
-        </div>
+    <a href="{{ path('categorie_index') }}">back to list</a>
 
-    {% endfor %}
+    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
 
-    <div class="row">
-
-        <div class="col float-left ">
-            <h1>Détail de la catégorie n° {{ categorie.id }}</h1>
-        </div>
-
-        <div class="col text-right">
-            <a href="{{ path('categorie_index') }}" class="btn btn-primary" title="Retour à la liste">Retour à la liste</a>
-            <a href="{{ path('categorie_edit', {'id': categorie.id}) }}" class="btn btn-warning" title="Modifier ce message">Modifier &#128393;</a>
-            {{ include('categorie/_delete_form.html.twig') }}
-        </div>
-
-    </div>
-    <p></p>
-    <div class="row">
-
-        <div class="col">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <th>Id</th>
-                        <td>{{ categorie.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>Code</th>
-                        <td>{{ categorie.code }}</td>
-                    </tr>
-                    <tr>
-                        <th>Famille</th>
-                        <td>{{ categorie.famille }}</td>
-                    </tr>
-                    <tr>
-                        <th>Nom</th>
-                        <td>{{ categorie.nom }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-</div>
-
+    {{ include('categorie/_delete_form.html.twig') }}
 {% endblock %}
 
-{% endif %}
+{#{% endif %}#}
