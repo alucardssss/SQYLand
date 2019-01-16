@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -10,7 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Artiste
  *
- * @ORM\Table(name="Artiste", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"})}, indexes={@ORM\Index(name="projet_id", columns={"projet_id"})})
+ * @ORM\Table(name="Artiste", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"})}, 
+ indexes={@ORM\Index(name="projet_id", columns={"projet_id"})})
  * @UniqueEntity(fields={"email"}, errorPath="email", message="Ce compte existe déjà !")
  * @ORM\Entity
  */
@@ -88,15 +91,11 @@ class Artiste implements UserInterface
      */
     private $dateConnexion;
 
+
     /**
-     * @var \Projet
-     *
-     * @ORM\ManyToOne(targetEntity="Projet")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="projet_id", referencedColumnName="id")
-     * })
+     * @ORM\OneToMany(targetEntity="App\Entity\Projet", mappedBy="artiste")
      */
-    private $projet;
+    private $projets;
 
 
     /**
@@ -169,12 +168,12 @@ class Artiste implements UserInterface
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage( $image)
     {
         $this->image = $image;
 
@@ -218,28 +217,11 @@ class Artiste implements UserInterface
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getProjet()
-    {
-        return $this->projet;
-    }
-
-    /**
-     * @param $projet
-     * @return Artiste
-     */
-    public function setProjet( $projet)
-    {
-        $this->projet = $projet;
-
-        return $this;
-    }
 
     public function __construct()
     {
         $this->dateInscription = new \DateTime();
+        $this->projets = new ArrayCollection();
     }
 
     /**
@@ -288,5 +270,35 @@ class Artiste implements UserInterface
         // TODO: Implement eraseCredentials() method.
     }
 
+    /**
+     * @return Collection|Projet[]
+     */
+    public function getProjets(): Collection
+    {
+        return $this->projets;
+    }
+
+    public function addProjets(Projet $projets): self
+    {
+        if (!$this->projets->contains($projets)) {
+            $this->projets[] = $projets;
+            $projets->setArtiste($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjets(Projet $projets): self
+    {
+        if ($this->projets->contains($projets)) {
+            $this->projets->removeElement($projets);
+            // set the owning side to null (unless already changed)
+            if ($projets->getArtiste() === $this) {
+                $projets->setArtiste(null);
+            }
+        }
+
+        return $this;
+    }
 
 }

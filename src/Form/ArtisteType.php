@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Artiste;
+use App\Entity\Categorie;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -36,10 +38,11 @@ class ArtisteType extends AbstractType
                     'placeholder' => 'Saisissez votre mot de passe'
                 ]
             ])
-            ->add('type',TextType::class, [
-                'label' => 'Saisissez votre type',
+            ->add('image',FileType::class, [
+                'required' => false,
+                'label' => 'Ajoutez une image à votre profil ',
                 'attr' => [
-                    'placeholder' => 'Saisissez votre type'
+                    'class' => 'dropify',
                 ]
             ])
             ->add('submit', SubmitType::class, [

@@ -217,84 +217,84 @@ class Contenu
         return $this;
     }
 
-    public function getImagePanoHead(): ?string
+    public function getImagePanoHead()
     {
         return $this->imagePanoHead;
     }
 
-    public function setImagePanoHead(string $imagePanoHead): self
+    public function setImagePanoHead( $imagePanoHead)
     {
         $this->imagePanoHead = $imagePanoHead;
 
         return $this;
     }
 
-    public function getImagePanoPresentation(): ?string
+    public function getImagePanoPresentation()
     {
         return $this->imagePanoPresentation;
     }
 
-    public function setImagePanoPresentation(string $imagePanoPresentation): self
+    public function setImagePanoPresentation( $imagePanoPresentation)
     {
         $this->imagePanoPresentation = $imagePanoPresentation;
 
         return $this;
     }
 
-    public function getImagePanoContact(): ?string
+    public function getImagePanoContact()
     {
         return $this->imagePanoContact;
     }
 
-    public function setImagePanoContact(string $imagePanoContact): self
+    public function setImagePanoContact( $imagePanoContact)
     {
         $this->imagePanoContact = $imagePanoContact;
 
         return $this;
     }
 
-    public function getImagePanoInscription(): ?string
+    public function getImagePanoInscription()
     {
         return $this->imagePanoInscription;
     }
 
-    public function setImagePanoInscription(string $imagePanoInscription): self
+    public function setImagePanoInscription( $imagePanoInscription)
     {
         $this->imagePanoInscription = $imagePanoInscription;
 
         return $this;
     }
 
-    public function getImagePanoConnexion(): ?string
+    public function getImagePanoConnexion()
     {
         return $this->imagePanoConnexion;
     }
 
-    public function setImagePanoConnexion(string $imagePanoConnexion): self
+    public function setImagePanoConnexion( $imagePanoConnexion)
     {
         $this->imagePanoConnexion = $imagePanoConnexion;
 
         return $this;
     }
 
-    public function getImagePanoResultat(): ?string
+    public function getImagePanoResultat()
     {
         return $this->imagePanoResultat;
     }
 
-    public function setImagePanoResultat(string $imagePanoResultat): self
+    public function setImagePanoResultat( $imagePanoResultat)
     {
         $this->imagePanoResultat = $imagePanoResultat;
 
         return $this;
     }
 
-    public function getPresentationImage(): ?string
+    public function getPresentationImage()
     {
         return $this->presentationImage;
     }
 
-    public function setPresentationImage(string $presentationImage): self
+    public function setPresentationImage( $presentationImage)
     {
         $this->presentationImage = $presentationImage;
 
@@ -337,12 +337,12 @@ class Contenu
         return $this;
     }
 
-    public function getPresseDoc(): ?string
+    public function getPresseDoc()
     {
         return $this->presseDoc;
     }
 
-    public function setPresseDoc(string $presseDoc): self
+    public function setPresseDoc( $presseDoc)
     {
         $this->presseDoc = $presseDoc;
 

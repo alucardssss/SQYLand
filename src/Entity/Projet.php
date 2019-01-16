@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -168,16 +170,22 @@ class Projet
      */
     private $iframeVideo3;
 
+
     /**
-     *
-     * @ORM\ManyToOne(targetEntity="Categorie",
-     *     cascade={"persist"},
-     *     inversedBy="artistes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", inversedBy="projets")
      */
     private $categorie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Artiste", inversedBy="projets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $artiste;
+
+    public function __construct()
+    {
+        $this->categorie = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -208,84 +216,84 @@ class Projet
         return $this;
     }
 
-    public function getImageProfil(): ?string
+    public function getImageProfil()
     {
         return $this->imageProfil;
     }
 
-    public function setImageProfil(?string $imageProfil): self
+    public function setImageProfil( $imageProfil): self
     {
         $this->imageProfil = $imageProfil;
 
         return $this;
     }
 
-    public function getImageLogo1(): ?string
+    public function getImageLogo1()
     {
         return $this->imageLogo1;
     }
 
-    public function setImageLogo1(?string $imageLogo1): self
+    public function setImageLogo1( $imageLogo1)
     {
         $this->imageLogo1 = $imageLogo1;
 
         return $this;
     }
 
-    public function getImageLogo2(): ?string
+    public function getImageLogo2()
     {
         return $this->imageLogo2;
     }
 
-    public function setImageLogo2(?string $imageLogo2): self
+    public function setImageLogo2( $imageLogo2)
     {
         $this->imageLogo2 = $imageLogo2;
 
         return $this;
     }
 
-    public function getImageLogo3(): ?string
+    public function getImageLogo3()
     {
         return $this->imageLogo3;
     }
 
-    public function setImageLogo3(?string $imageLogo3): self
+    public function setImageLogo3( $imageLogo3)
     {
         $this->imageLogo3 = $imageLogo3;
 
         return $this;
     }
 
-    public function getImage1(): ?string
+    public function getImage1()
     {
         return $this->image1;
     }
 
-    public function setImage1(?string $image1): self
+    public function setImage1( $image1)
     {
         $this->image1 = $image1;
 
         return $this;
     }
 
-    public function getImage2(): ?string
+    public function getImage2()
     {
         return $this->image2;
     }
 
-    public function setImage2(?string $image2): self
+    public function setImage2( $image2)
     {
         $this->image2 = $image2;
 
         return $this;
     }
 
-    public function getImage3(): ?string
+    public function getImage3()
     {
         return $this->image3;
     }
 
-    public function setImage3(?string $image3): self
+    public function setImage3( $image3)
     {
         $this->image3 = $image3;
 
@@ -436,21 +444,42 @@ class Projet
         return $this;
     }
 
+
     /**
-     * @return mixed
+     * @return Collection|Categorie[]
      */
-    public function getCategorie()
+    public function getCategorie(): Collection
     {
         return $this->categorie;
     }
 
-    /**
-     * @param $categorie
-     * @return Artiste
-     */
-    public function setCategorie($categorie)
+    public function addCategorie(Categorie $categorie): self
     {
-        $this->categorie = $categorie;
+        if (!$this->categorie->contains($categorie)) {
+            $this->categorie[] = $categorie;
+        }
+
+        return $this;
+    }
+
+    public function removeCategorie(Categorie $categorie): self
+    {
+        if ($this->categorie->contains($categorie)) {
+            $this->categorie->removeElement($categorie);
+        }
+
+        return $this;
+    }
+
+    public function getArtiste(): ?Artiste
+    {
+        return $this->artiste;
+    }
+
+    public function setArtiste(?Artiste $artiste): self
+    {
+        $this->artiste = $artiste;
+
         return $this;
     }
 
