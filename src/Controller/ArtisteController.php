@@ -27,6 +27,7 @@ class ArtisteController extends AbstractController
      * Inscriptions d'un artiste
      * @Route("/inscription", name="artiste_inscription", methods={"GET","POST"})
      * @param Request $request
+     * @param \Swift_Mailer $mailer
      * @param UserPasswordEncoderInterface $encoder
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -148,7 +149,7 @@ class ArtisteController extends AbstractController
    public function show(Artiste $artiste, Categorie $categorie, Projet $projet): Response
    {
       return $this->render('artiste/show.html.twig', [
-           'artiste' => $Artiste,
+           'artiste' => $artiste,
           'categorie' => $categorie,
           'projet' => $projet
        ]);

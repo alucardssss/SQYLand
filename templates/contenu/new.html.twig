@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{#{% if is_granted('ROLE_ADMIN') %}#}
+{% if is_granted('ROLE_ADMIN') %}
 
 {% block title %}Création d'un contenu {% endblock %}
 
@@ -50,4 +50,4 @@
         });
     </script>
 {%  endblock %}
-{#{% endif %}#}
+{% endif %}

@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{#{% if is_granted('ROLE_ADMIN') %}#}
+{% if is_granted('ROLE_ADMIN') %}
 
 {% block title %}Détail de la catégorie n° {{ categorie.id }}{% endblock %}
 
@@ -59,4 +59,4 @@
 
 {% endblock %}
 
-{#{% endif %}#}
+{% endif %}

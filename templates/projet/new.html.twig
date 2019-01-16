@@ -1,5 +1,5 @@
 {% extends 'layout.html.twig' %}
-
+{% if is_granted('ROLE_ARTISTE') %}
 {% block title %}Création d'un projet{% endblock %}
 
 {% block stylesheets %}
@@ -46,3 +46,4 @@
         });
     </script>
 {%  endblock %}
+{% endif %}

@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{#{% if is_granted('ROLE_ADMIN') %}#}
+{% if is_granted('ROLE_ADMIN') %}
 
 {% block title %}Modifier le message n° {{ message.id }}{% endblock %}
 
@@ -42,6 +42,6 @@
         });
     </script>
 {%  endblock %}
-{#{% endif %}#}
+{% endif %}
 
 

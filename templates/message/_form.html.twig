@@ -54,7 +54,7 @@
 
 
 
-        {#{% if form.vars.value.nouveau == '1' %}#}
+
 
             <div class="form-group">
                 {{ form_label(form.fichier) }}
@@ -67,7 +67,7 @@
                     <div class="col">
 
 
-                        {#{% if is_granted('ROLE_ADMIN') %}#}
+                        {% if is_granted('ROLE_ADMIN') %}
 
                             <!--///////////////////  ADMIN-CHECKBOX  //////////////////-->
                             <section class="admin-checkbox d-flex">
@@ -102,7 +102,7 @@
 
                             </section> <!-- /.admin-checkbox -->
 
-                        {#{% endif %}#}
+                        {% endif %}
 
 
                     </div> <!-- /.col -->
@@ -111,7 +111,7 @@
 
             </div> <!-- /.form.fichier -->
 
-        {#{% endif %}#}
+
 
 
 

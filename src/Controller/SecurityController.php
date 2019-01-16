@@ -34,9 +34,9 @@ class SecurityController extends AbstractController
 
     /**
      * deconnexion dun membre
-     * @Route("/deconnexion.html", name="security_deconnexion")
+     * @Route("/deconnexion", name="security_logout")
      */
-    public function deconnexion()
+    public function logout()
     {
 
     }
