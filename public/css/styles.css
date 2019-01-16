@@ -19,7 +19,7 @@
 
     06. Page Resultats
     07. Page Inscription
-    
+    07. Page Connexion / Connexion admin
     08. Page Contact 
     09. Footer 
     10. Page 404
@@ -105,6 +105,31 @@ body {
     line-height: 1.5;
     border-radius: .3rem;
 }
+
+
+
+/******* PAGE CONNEXION / CONNEXION ADMIN *******/
+
+@media (min-width: 375px) {
+    .connexion_user_wrap, .connexion_admin_wrap {
+        min-height: 550px;
+    }
+}
+
+@media (min-width: 768px) {
+    .connexion_user_wrap, .connexion_admin_wrap {
+        min-height: 700px;
+    }
+}
+
+@media (min-width: 992px) {
+    .connexion_user_wrap, .connexion_admin_wrap {
+        min-height: 800px;
+    }
+
+}
+
+
 
 
 
