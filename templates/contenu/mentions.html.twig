@@ -4,7 +4,6 @@
 
 {% block content %}
 
-    {% include 'component/_header.html.twig' %}
 
     <div class="container-fluid bg-bleuRoi">
         <div class="container">
@@ -21,9 +20,8 @@
 
     <a href="{{ path('contenu_edit', {'id': contenu.id}) }}">edit</a>
 
-    {#{% endif %}#}
+    {% endif %}
 
-    {% include 'component/_footer.html.twig' %}
 
 {% endblock %}
 
