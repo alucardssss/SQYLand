@@ -10,50 +10,50 @@
 //////////////////  CONTENU DE LA PAGE  /////////////////
 ******************************************************-->
 
-
-
-
 <!--///////////////////  FORMULAIRE  //////////////////-->
 
     <div class="row">
         <div class="col">
-            <section class="formulaire">
+            <section class="formulaire d-md-flex  justify-content-center">
 
-                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-        
-                <div class="form-group">
-                    {{ form_label(form.expediteur) }}
+                <div>
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+            
+                    <div class="form-group">
+                        {{ form_label(form.expediteur) }}
 
-                    {{ form_widget(form.expediteur) }}
-                    {{ form_help(form.expediteur) }}
+                        {{ form_widget(form.expediteur) }}
+                        {{ form_help(form.expediteur) }}
+                    </div>
+            
+
+                    <div class="form-group">
+                        {{ form_label(form.sujet) }}
+                        {{ form_errors(form.sujet) }}
+                        {{ form_widget(form.sujet) }}
+                        {{ form_help(form.sujet) }}
+                    </div>
+
+
+                    <div class="form-group">
+                        {{ form_label(form.texte) }}
+                        {{ form_errors(form.texte) }}
+                        {{ form_widget(form.texte) }}
+                        {{ form_help(form.texte) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.liste) }}
+                        {{ form_errors(form.liste) }}
+                        {{ form_widget(form.liste) }}
+                        {{ form_help(form.liste) }}
+                    </div>
+
+            
+
+                        {{ form_end(form) }}
                 </div>
-        
 
-                <div class="form-group">
-                    {{ form_label(form.sujet) }}
-                    {{ form_errors(form.sujet) }}
-                    {{ form_widget(form.sujet) }}
-                    {{ form_help(form.sujet) }}
-                </div>
-
-
-                <div class="form-group">
-                    {{ form_label(form.texte) }}
-                    {{ form_errors(form.texte) }}
-                    {{ form_widget(form.texte) }}
-                    {{ form_help(form.texte) }}
-                </div>
-
-                <div class="col">
-                    {{ form_label(form.liste) }}
-                    {{ form_errors(form.liste) }}
-                    {{ form_widget(form.liste) }}
-                    {{ form_help(form.liste) }}
-                </div>
-
-        
-
-                    {{ form_end(form) }}
             </section>
         </div> <!-- /.col -->
     </div> <!-- /.row -->
@@ -76,8 +76,8 @@
                         {% if is_granted('ROLE_ADMIN') %}
 
                             <!--///////////////////  ADMIN-CHECKBOX  //////////////////-->
-                            <section class="admin-checkbox d-flex">
-
+                            <section class="admin-checkbox">
+                                
                                 <div>
                                     {{ form_label(form.nouveau) }}
                                     {{ form_errors(form.nouveau) }}
@@ -124,7 +124,7 @@
     
 
       <!--///////////////////  FAVORIS  //////////////////-->
-      <div class="row">
+      <!-- <div class="row">
             <div class="col border my-3 bg-bleuRoi">
                 <section>
 
@@ -163,9 +163,10 @@
 
                     </div>
 
-                </section>
-            </div> <!-- /.col -->
-        </div> <!-- /.row -->
+                </section> 
+            </div> 
+        </div>
+        -->
         
         
 

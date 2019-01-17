@@ -106,6 +106,10 @@ body {
     border-radius: .3rem;
 }
 
+/* Bouton "parcourir" pour ajouter une image */
+#artiste_image {
+    display: block;
+}
 
 
 /******* PAGE CONNEXION / CONNEXION ADMIN *******/
