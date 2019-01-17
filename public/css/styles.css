@@ -32,6 +32,26 @@ body {
 }
 
 
+/* Boutons */
+#security_connexion_submit, 
+#form_submit,
+#artiste_submit {
+    /* btn-block */
+    display: block;
+    width: 100%;
+
+    /* btn-vanille */
+    background-color: rgb(225, 206, 154);
+    border-color: rgb(225, 206, 154);
+
+    /* btn-lg */
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+}
+
+
 /* Couleur des textes */
 .text-vanille {
     color: rgb(225,206,154);
@@ -89,23 +109,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Bouton inscription */
-#artiste_submit {
-    /* btn-block */
-    display: block;
-    width: 100%;
-
-    /* btn-vanille */
-    background-color: rgb(225, 206, 154);
-    border-color: rgb(225, 206, 154);
-
-    /* btn-lg */
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: .3rem;
-}
-
 /* Bouton "parcourir" pour ajouter une image */
 #artiste_image {
     display: block;
@@ -132,24 +135,6 @@ body {
     }
 
 }
-/* Bouton connexion */
-#security_connexion_submit{
-    /* btn-block */
-    display: block;
-    width: 100%;
-
-    /* btn-vanille */
-    background-color: rgb(225, 206, 154);
-    border-color: rgb(225, 206, 154);
-
-    /* btn-lg */
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: .3rem;
-}
-
-
 
 
 
@@ -169,3 +154,4 @@ body {
         min-height: 400px;
     }
 }
+
