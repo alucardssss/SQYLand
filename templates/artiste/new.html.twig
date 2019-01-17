@@ -15,13 +15,15 @@
             <div class="container">
 
                 <!--******** Bouton retour *********-->
-                <div class="text-left">
-                    <a href="{{ path('artiste_index') }}" class="btn btn-vanille" title="Retour">Retour</a>
-                </div>
+                <!-- 
+                    <div class="text-left">
+                        <a href="{{ path('artiste_index') }}" class="btn btn-vanille" title="Retour">Retour</a>
+                    </div>
+                -->
 
 
 
-                <h1 class="text-white my-5">Inscription</h1>
+                <h1 class="text-center text-white my-5">Inscription</h1>
 
 
                 {% for message in app.flashes('notice') %}
@@ -30,12 +32,17 @@
                     </div>
 
                 {% endfor %}
-
-                {# {{ include('artiste/_form.html.twig') }} #}
-
+        
 
                 <!--********* Formulaire **********-->
-                {{ form(form, {attr:{novalidate: 'novalidate' }}) }}
+                <div class="d-md-flex  justify-content-center">
+
+                    <div>
+                        {{ form(form, {attr:{novalidate: 'novalidate' }}) }}
+                    </div>
+
+                </div>
+                
 
 
             </div> <!-- /.container -->

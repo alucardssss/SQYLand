@@ -18,12 +18,19 @@
             </div>
         {% endfor %}
 
-        <h1>Contact</h1>
+        
+        <h1 class="text-center">Contact</h1>
 
-        <div class="text-left">
-            <a href="{{ path('contenu_show') }}" class="btn btn-primary" title="Retour à l'accueil">Retour à l'accueil</a>
-        </div>
 
+        {% if is_granted('ROLE_ADMIN') %}
+
+            <div class="text-left">
+                <a href="{{ path('message_index') }}" class="btn btn-primary" title="Retour à l'accueil">Retour à l'accueil</a>
+            </div>
+
+        {% endif %}
+
+        
         {{ include('message/_form.html.twig') }}
 
     </div>
